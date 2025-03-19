@@ -1,6 +1,6 @@
 # Earnings Alert
 
-Python that automatically tracks and displays upcoming earnings calls for select financial services firms.
+Python tool that automatically tracks and displays upcoming earnings calls for select financial services firms.
 
 ## Project Structure
 
