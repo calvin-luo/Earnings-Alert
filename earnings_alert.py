@@ -342,7 +342,7 @@ def generate_markdown_table(earnings_data, rules):
             
             row = [
                 date_str,
-                f"[{entry['ticker']}](#{entry['ticker'].lower()})",
+                entry['ticker'],
                 entry['name'],
                 entry['category'],
                 entry['industry']
@@ -390,51 +390,7 @@ def generate_markdown_table(earnings_data, rules):
         # No grouping
         markdown += generate_table(sorted_data)
     
-    # Add detailed company information sections
-    markdown += "## Company Details\n\n"
-    for entry in sorted_data:
-        markdown += f"### <a name='{entry['ticker'].lower()}'></a>{entry['ticker']}: {entry['name']}\n\n"
-        date_str = entry['earnings_date'].strftime("%Y-%m-%d") if hasattr(entry['earnings_date'], 'strftime') else str(entry['earnings_date'])
-        
-        markdown += f"- **Earnings Date:** {date_str}\n"
-        markdown += f"- **Category:** {entry['category']}\n"
-        markdown += f"- **Industry:** {entry['industry']}\n"
-        
-        market_cap_str = f"${entry['market_cap'] / 1e9:.2f}B" if isinstance(entry['market_cap'], (int, float)) else entry['market_cap']
-        pe_str = f"{entry['pe_ratio']:.2f}" if isinstance(entry['pe_ratio'], (int, float)) else entry['pe_ratio']
-        
-        markdown += f"- **Market Cap:** {market_cap_str}\n"
-        markdown += f"- **P/E Ratio:** {pe_str}\n"
-        
-        # Add additional metrics
-        markdown += f"- **Forward P/E:** {entry['forward_pe'] if isinstance(entry['forward_pe'], str) else f'{entry['forward_pe']:.2f}' if isinstance(entry['forward_pe'], (int, float)) else 'N/A'}\n"
-        markdown += f"- **Dividend Yield:** {entry['dividend_yield']}\n"
-        markdown += f"- **Beta:** {entry['beta'] if isinstance(entry['beta'], str) else f'{entry['beta']:.2f}' if isinstance(entry['beta'], (int, float)) else 'N/A'}\n"
-        markdown += f"- **52-Week High:** ${entry['52w_high'] if isinstance(entry['52w_high'], str) else f'{entry['52w_high']:.2f}' if isinstance(entry['52w_high'], (int, float)) else 'N/A'}\n"
-        markdown += f"- **52-Week Low:** ${entry['52w_low'] if isinstance(entry['52w_low'], str) else f'{entry['52w_low']:.2f}' if isinstance(entry['52w_low'], (int, float)) else 'N/A'}\n\n"
-        
-        # Financial metrics section
-        markdown += "**Financial Metrics:**\n"
-        
-        # Add financial services specific metrics if available
-        if entry.get('priceToBook'):
-            p_to_b = entry['priceToBook'] if isinstance(entry['priceToBook'], str) else f"{entry['priceToBook']:.2f}" if isinstance(entry['priceToBook'], (int, float)) else 'N/A'
-            markdown += f"- **Price to Book:** {p_to_b}\n"
-            
-        if entry.get('returnOnEquity'):
-            roe = entry['returnOnEquity'] if isinstance(entry['returnOnEquity'], str) else f"{entry['returnOnEquity'] * 100:.2f}%" if isinstance(entry['returnOnEquity'], (int, float)) else 'N/A'
-            markdown += f"- **Return on Equity:** {roe}\n"
-            
-        if entry.get('debtToEquity'):
-            d_to_e = entry['debtToEquity'] if isinstance(entry['debtToEquity'], str) else f"{entry['debtToEquity']:.2f}" if isinstance(entry['debtToEquity'], (int, float)) else 'N/A'
-            markdown += f"- **Debt to Equity:** {d_to_e}\n"
-            
-        if entry.get('profitMargins'):
-            margins = entry['profitMargins'] if isinstance(entry['profitMargins'], str) else f"{entry['profitMargins'] * 100:.2f}%" if isinstance(entry['profitMargins'], (int, float)) else 'N/A'
-            markdown += f"- **Profit Margins:** {margins}\n"
-            
-        markdown += "\n*(Further financial analysis will be added in future versions)*\n\n"
-        markdown += "---\n\n"
+    # REMOVED: Detailed company information sections
     
     return markdown
 

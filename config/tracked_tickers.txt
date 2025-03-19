@@ -42,7 +42,6 @@ ICE     # Intercontinental Exchange, Inc.
 CME     # CME Group Inc.
 NDAQ    # Nasdaq, Inc.
 SPGI    # S&P Global Inc.
-MKTX    # MarketAxess Holdings Inc.
 TW      # Tradeweb Markets Inc.
 CBOE    # Cboe Global Markets, Inc.
 FCF     # First Commonwealth Financial Corporation
