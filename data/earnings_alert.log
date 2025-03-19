@@ -3737,3 +3737,53 @@
 2025-03-19 00:02:02,785 - earnings_alert - INFO - Updated alerts.md with new earnings data
 2025-03-19 00:02:02,791 - earnings_alert - INFO - Logged update at 2025-03-19 00:02:02
 2025-03-19 00:02:02,792 - earnings_alert - INFO - Completed earnings alert update. Found 99 upcoming earnings calls.
+2025-03-19 00:20:13,538 - test_earnings_alert - INFO - Starting test with small ticker subset
+2025-03-19 00:20:13,540 - test_earnings_alert - INFO - Processing JPM
+2025-03-19 00:20:13,545 - peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_cookieschema" ("strategy" VARCHAR(255) NOT NULL PRIMARY KEY, "fetch_date" DATETIME NOT NULL, "cookie_bytes" BLOB NOT NULL) WITHOUT ROWID', [])
+2025-03-19 00:20:13,547 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+2025-03-19 00:20:13,552 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query1.finance.yahoo.com:443
+2025-03-19 00:20:13,786 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/1.1" 200 11
+2025-03-19 00:20:13,789 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query2.finance.yahoo.com:443
+2025-03-19 00:20:13,890 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JPM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=JPM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 00:20:13,892 - test_earnings_alert - INFO - Found earnings date for JPM: 2025-04-11
+2025-03-19 00:20:13,952 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JPM?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=JPM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 00:20:14,060 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=JPM&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1135
+2025-03-19 00:20:14,137 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/JPM?symbol=JPM&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 00:20:14,139 - test_earnings_alert - INFO - Processing GS
+2025-03-19 00:20:14,188 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 00:20:14,189 - test_earnings_alert - INFO - Found earnings date for GS: 2025-04-14
+2025-03-19 00:20:14,241 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GS?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=GS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2925
+2025-03-19 00:20:14,328 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=GS&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1150
+2025-03-19 00:20:14,377 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/GS?symbol=GS&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 360
+2025-03-19 00:20:14,378 - test_earnings_alert - INFO - Processing BLK
+2025-03-19 00:20:14,459 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BLK?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BLK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 389
+2025-03-19 00:20:14,461 - test_earnings_alert - INFO - Found earnings date for BLK: 2025-04-07
+2025-03-19 00:20:14,517 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BLK?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BLK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 00:20:14,619 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=BLK&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1149
+2025-03-19 00:20:14,694 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/BLK?symbol=BLK&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 00:20:14,695 - test_earnings_alert - INFO - Processing V
+2025-03-19 00:20:14,771 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/V?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=V&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 00:20:14,772 - test_earnings_alert - INFO - Found earnings date for V: 2025-04-21
+2025-03-19 00:20:14,824 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/V?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=V&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 00:20:14,896 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=V&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1133
+2025-03-19 00:20:14,943 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/V?symbol=V&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 359
+2025-03-19 00:20:14,944 - test_earnings_alert - INFO - Processing MA
+2025-03-19 00:20:14,989 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 00:20:14,990 - test_earnings_alert - INFO - Found earnings date for MA: 2025-04-29
+2025-03-19 00:20:15,069 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MA?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=MA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 00:20:15,157 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=MA&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1241
+2025-03-19 00:20:15,249 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/MA?symbol=MA&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 360
+2025-03-19 00:20:15,251 - test_earnings_alert - INFO - Processing MET
+2025-03-19 00:20:15,355 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MET?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MET&crumb=v1WWQHyu6p3 HTTP/1.1" 200 391
+2025-03-19 00:20:15,356 - test_earnings_alert - INFO - Found earnings date for MET: 2025-04-29
+2025-03-19 00:20:15,435 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MET?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=MET&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 00:20:15,514 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=MET&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1138
+2025-03-19 00:20:15,599 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/MET?symbol=MET&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 00:20:15,601 - test_earnings_alert - INFO - Processing PYPL
+2025-03-19 00:20:15,672 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PYPL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PYPL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 330
+2025-03-19 00:20:15,673 - test_earnings_alert - INFO - Found earnings date for PYPL: 2025-04-28
+2025-03-19 00:20:15,749 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PYPL?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=PYPL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2599
+2025-03-19 00:20:15,850 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=PYPL&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1120
+2025-03-19 00:20:15,925 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/PYPL?symbol=PYPL&type=trailingPegRatio&period1=1726617600&period2=1742428800&crumb=v1WWQHyu6p3 HTTP/1.1" 200 362
+2025-03-19 00:20:15,928 - test_earnings_alert - INFO - Test completed successfully. Found 7 earnings dates.
+2025-03-19 00:20:15,929 - test_earnings_alert - INFO - Results saved to test_alerts.md
