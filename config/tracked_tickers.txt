@@ -1,0 +1,131 @@
+# Financial Services Companies by Category
+# Last updated: March 2025
+
+# Investment Banking & Capital Markets
+JPM     # JPMorgan Chase & Co.
+GS      # Goldman Sachs Group, Inc.
+MS      # Morgan Stanley
+C       # Citigroup Inc.
+COWN    # Cowen Inc.
+EVR     # Evercore Inc.
+LAZ     # Lazard Ltd.
+PJC     # Piper Sandler Companies
+RJF     # Raymond James Financial, Inc.
+SF      # Stifel Financial Corp.
+
+# Diversified Banks
+BAC     # Bank of America Corporation
+WFC     # Wells Fargo & Company
+USB     # U.S. Bancorp
+TFC     # Truist Financial Corporation
+PNC     # The PNC Financial Services Group, Inc.
+FITB    # Fifth Third Bancorp
+KEY     # KeyCorp
+RF      # Regions Financial Corporation
+CFG     # Citizens Financial Group, Inc.
+MTB     # M&T Bank Corporation
+
+# Asset Management & Custody
+BLK     # BlackRock, Inc.
+BK      # The Bank of New York Mellon Corporation
+NTRS    # Northern Trust Corporation
+STT     # State Street Corporation
+TROW    # T. Rowe Price Group, Inc.
+BEN     # Franklin Resources, Inc.
+IVZ     # Invesco Ltd.
+AMG     # Affiliated Managers Group, Inc.
+JHG     # Janus Henderson Group plc
+AB      # AllianceBernstein Holding L.P.
+
+# Financial Exchanges & Data
+ICE     # Intercontinental Exchange, Inc.
+CME     # CME Group Inc.
+NDAQ    # Nasdaq, Inc.
+SPGI    # S&P Global Inc.
+MKTX    # MarketAxess Holdings Inc.
+TW      # Tradeweb Markets Inc.
+CBOE    # Cboe Global Markets, Inc.
+FCF     # First Commonwealth Financial Corporation
+COIN    # Coinbase Global, Inc.
+
+# Consumer Finance & Payment Networks
+V       # Visa Inc.
+MA      # Mastercard Incorporated
+AXP     # American Express Company
+DFS     # Discover Financial Services
+COF     # Capital One Financial Corporation
+SYF     # Synchrony Financial
+PYPL    # PayPal Holdings, Inc.
+AFRM    # Affirm Holdings, Inc.
+SQ      # Block, Inc. (formerly Square)
+FISV    # Fiserv, Inc.
+
+# Brokerage & Wealth Management
+SCHW    # The Charles Schwab Corporation
+IBKR    # Interactive Brokers Group, Inc.
+AMTD    # TD Ameritrade Holding Corporation
+LPLA    # LPL Financial Holdings Inc.
+MORN    # Morningstar, Inc.
+HOOD    # Robinhood Markets, Inc.
+RBC     # RBC Bearings Incorporated
+SEIC    # SEI Investments Company
+
+# Insurance - Life & Health
+MET     # MetLife, Inc.
+PRU     # Prudential Financial, Inc.
+AFL     # Aflac Incorporated
+UNM     # Unum Group
+LNC     # Lincoln National Corporation
+PFG     # Principal Financial Group, Inc.
+EQH     # Equitable Holdings, Inc.
+BHF     # Brighthouse Financial, Inc.
+GL      # Globe Life Inc.
+CNO     # CNO Financial Group, Inc.
+
+# Insurance - Property & Casualty
+ALL     # The Allstate Corporation
+TRV     # The Travelers Companies, Inc.
+PGR     # The Progressive Corporation
+CB      # Chubb Limited
+HIG     # The Hartford Financial Services Group, Inc.
+CINF    # Cincinnati Financial Corporation
+L       # Loews Corporation
+RNR     # RenaissanceRe Holdings Ltd.
+WRB     # W. R. Berkley Corporation
+BRO     # Brown & Brown, Inc.
+
+# Financial Technology (FinTech)
+FIS     # Fidelity National Information Services, Inc.
+FISV    # Fiserv, Inc.
+GPN     # Global Payments Inc.
+FICO    # Fair Isaac Corporation
+ENV     # Envestnet, Inc.
+EEFT    # Euronet Worldwide, Inc.
+VIRT    # Virtu Financial, Inc.
+MKTX    # MarketAxess Holdings Inc.
+FLT     # FLEETCOR Technologies, Inc.
+WEX     # WEX Inc.
+
+# Mortgage Finance & REITs
+BXMT    # Blackstone Mortgage Trust, Inc.
+NLY     # Annaly Capital Management, Inc.
+AGNC    # AGNC Investment Corp.
+TWO     # Two Harbors Investment Corp.
+CIM     # Chimera Investment Corporation
+PMT     # PennyMac Mortgage Investment Trust
+DX      # Dynex Capital, Inc.
+STWD    # Starwood Property Trust, Inc.
+ABR     # Arbor Realty Trust, Inc.
+RC      # Ready Capital Corporation
+
+# Private Equity & Alternative Asset Managers
+BX      # Blackstone Inc.
+KKR     # KKR & Co. Inc.
+APO     # Apollo Global Management, Inc.
+CG      # The Carlyle Group Inc.
+ARES    # Ares Management Corporation
+BAM     # Brookfield Asset Management Ltd.
+OWL     # Blue Owl Capital Inc.
+TPG     # TPG Inc.
+HLNE    # Hamilton Lane Incorporated
+TSLX    # Sixth Street Specialty Lending, Inc.

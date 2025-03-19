@@ -1,0 +1,35 @@
+name: Update Earnings Alerts
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  # Run at midnight on the 1st of every month
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  update-earnings:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install yfinance pandas
+        
+    - name: Run earnings alert script
+      run: python earnings_alert.py
+      
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add alerts.md data/earnings_history.csv data/alerts_log.csv
+        git diff --quiet && git diff --staged --quiet || git commit -m "Update earnings alerts for $(date +%B-%Y)"
+        git push
