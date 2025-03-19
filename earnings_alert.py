@@ -8,9 +8,9 @@ import calendar
 import logging
 import traceback
 
-# Setup logging
+# setup logging
 logging.basicConfig(
-    level=logging.DEBUG,  # Changed to DEBUG for more detailed logging during development
+    level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
         logging.FileHandler("data/earnings_alert.log"),
@@ -19,12 +19,13 @@ logging.basicConfig(
 )
 logger = logging.getLogger('earnings_alert')
 
-# Set yfinance logger to WARNING to reduce noise
+# set yfinance logger to WARNING to reduce noise
 logging.getLogger('yfinance').setLevel(logging.WARNING)
 
+# load tracked tickers and alert rules
 def load_config():
+
     """Load configuration from files"""
-    # Load tracked tickers (skip comments starting with #)
     try:
         with open('config/tracked_tickers.txt', 'r') as f:
             tickers = []
@@ -39,7 +40,6 @@ def load_config():
         logger.error("Tracked tickers file not found!")
         tickers = []
     
-    # Load alert rules
     try:
         with open('config/alert_rules.json', 'r') as f:
             rules = json.load(f)
@@ -49,15 +49,14 @@ def load_config():
     
     return tickers, rules
 
+# get last day of month
 def get_current_month_dates(days_ahead=0):
     """Get the first and last day of the current month, with optional extension"""
     today = datetime.now()
     first_day = today.replace(day=1)
     
-    # Get the last day of the month
     last_day = today.replace(day=calendar.monthrange(today.year, today.month)[1])
     
-    # Extend range if requested
     if days_ahead > 0:
         last_day = last_day + timedelta(days=days_ahead)
     
