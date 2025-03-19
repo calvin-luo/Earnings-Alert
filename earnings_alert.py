@@ -13,10 +13,11 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler("data/earnings_alert.log"),
-        logging.StreamHandler()
+        logging.FileHandler("data/earnings_alert.log")
+        # StreamHandler is removed, so no output to console
     ]
 )
+
 logger = logging.getLogger('earnings_alert')
 
 # set yfinance logger to WARNING to reduce noise
