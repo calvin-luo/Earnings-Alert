@@ -325,9 +325,14 @@ def generate_markdown_table(earnings_data, rules):
         if title:
             result += f"## {title}\n\n"
         
-        # Table header
+        # Table header row
         result += "| " + " | ".join(headers) + " |\n"
-        result += "|" + "---|" * len(headers) + "\n"
+        
+        # Proper separator row with a dash in each cell
+        separator_row = []
+        for _ in headers:
+            separator_row.append("---")
+        result += "| " + " | ".join(separator_row) + " |\n"
         
         # Table rows
         for entry in data:

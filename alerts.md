@@ -7,7 +7,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Asset Management & Custody
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-07 | [BLK](#blk) | BlackRock, Inc. | Asset Management & Custody | Asset Management | $148.83B | 22.83 |
 | 2025-04-10 | [STT](#stt) | State Street Corporation | Asset Management & Custody | Asset Management | $25.42B | 10.73 |
 | 2025-04-11 | [BK](#bk) | The Bank of New York Mellon Cor | Asset Management & Custody | Banks - Diversified | $59.33B | 14.25 |
@@ -22,7 +22,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Brokerage & Wealth Management
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-03-19 | [AMTD](#amtd) | AMTD IDEA Group | Brokerage & Wealth Management | Asset Management | $1.09B | N/A |
 | 2025-04-14 | [IBKR](#ibkr) | Interactive Brokers Group, Inc. | Brokerage & Wealth Management | Capital Markets | $73.71B | 24.96 |
 | 2025-04-17 | [SCHW](#schw) | Charles Schwab Corporation (The | Brokerage & Wealth Management | Capital Markets | $140.66B | 25.94 |
@@ -35,7 +35,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Consumer Finance & Payment Networks
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-15 | [DFS](#dfs) | Discover Financial Services | Consumer Finance & Payment Networks | Credit Services | $39.96B | 8.96 |
 | 2025-04-17 | [AXP](#axp) | American Express Company | Consumer Finance & Payment Networks | Credit Services | $184.20B | 18.77 |
 | 2025-04-21 | [V](#v) | Visa Inc. | Consumer Finance & Payment Networks | Credit Services | $645.77B | 33.78 |
@@ -48,7 +48,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Diversified Banks
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-11 | [WFC](#wfc) | Wells Fargo & Company | Diversified Banks | Banks - Diversified | $233.82B | 13.24 |
 | 2025-04-14 | [MTB](#mtb) | M&T Bank Corporation | Diversified Banks | Banks - Regional | $28.72B | 11.95 |
 | 2025-04-15 | [BAC](#bac) | Bank of America Corporation | Diversified Banks | Banks - Diversified | $316.66B | 12.98 |
@@ -63,7 +63,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Financial Exchanges & Data
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-21 | [FCF](#fcf) | First | Financial Exchanges & Data | Banks - Regional | $1.62B | 11.46 |
 | 2025-04-23 | [CME](#cme) | CME Group Inc. | Financial Exchanges & Data | Financial Data & Stock Exchanges | $95.74B | 27.56 |
 | 2025-04-23 | [NDAQ](#ndaq) | Nasdaq, Inc. | Financial Exchanges & Data | Financial Data & Stock Exchanges | $43.31B | 39.02 |
@@ -78,7 +78,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Financial Technology (FinTech)
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-22 | [VIRT](#virt) | Virtu Financial, Inc. | Financial Technology (FinTech) | Capital Markets | $5.60B | 12.22 |
 | 2025-04-23 | [FICO](#fico) | Fair Isaac Corporation | Financial Technology (FinTech) | Software - Application | $44.33B | 83.35 |
 | 2025-04-23 | [WEX](#wex) | WEX Inc. | Financial Technology (FinTech) | Software - Infrastructure | $6.04B | 20.75 |
@@ -89,7 +89,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Insurance - Life & Health
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-21 | [GL](#gl) | Globe Life Inc. | Insurance - Life & Health | Insurance - Life | $10.65B | 10.63 |
 | 2025-04-23 | [PFG](#pfg) | Principal Financial Group Inc | Insurance - Life & Health | Asset Management | $18.78B | 12.46 |
 | 2025-04-28 | [PRU](#pru) | Prudential Financial, Inc. | Insurance - Life & Health | Insurance - Life | $38.85B | 14.63 |
@@ -104,7 +104,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Insurance - Property & Casualty
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-03-19 | [PGR](#pgr) | Progressive Corporation (The) | Insurance - Property & Casualty | Insurance - Property & Casualty | $166.06B | 19.69 |
 | 2025-04-16 | [TRV](#trv) | The Travelers Companies, Inc. | Insurance - Property & Casualty | Insurance - Property & Casualty | $59.06B | 12.13 |
 | 2025-04-21 | [CB](#cb) | Chubb Limited | Insurance - Property & Casualty | Insurance - Property & Casualty | $118.47B | 13.02 |
@@ -119,7 +119,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Investment Banking & Capital Markets
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-11 | [JPM](#jpm) | JP Morgan Chase & Co. | Investment Banking & Capital Markets | Banks - Diversified | $657.00B | 11.89 |
 | 2025-04-11 | [MS](#ms) | Morgan Stanley | Investment Banking & Capital Markets | Capital Markets | $190.49B | 14.86 |
 | 2025-04-14 | [GS](#gs) | Goldman Sachs Group, Inc. (The) | Investment Banking & Capital Markets | Capital Markets | $171.49B | 13.60 |
@@ -132,7 +132,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Mortgage Finance & REITs
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-21 | [AGNC](#agnc) | AGNC Investment Corp. | Mortgage Finance & REITs | REIT - Mortgage | $9.51B | 11.17 |
 | 2025-04-21 | [DX](#dx) | Dynex Capital, Inc. | Mortgage Finance & REITs | REIT - Mortgage | $1.30B | 9.68 |
 | 2025-04-22 | [BXMT](#bxmt) | Blackstone Mortgage Trust, Inc. | Mortgage Finance & REITs | REIT - Mortgage | $3.59B | N/A |
@@ -147,7 +147,7 @@ This table shows upcoming earnings calls for 99 financial services companies.
 ## Private Equity & Alternative Asset Managers
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-16 | [BX](#bx) | Blackstone Inc. | Private Equity & Alternative Asset Managers | Asset Management | $178.16B | 40.27 |
 | 2025-04-29 | [KKR](#kkr) | KKR & Co. Inc. | Private Equity & Alternative Asset Managers | Asset Management | $105.22B | 34.76 |
 | 2025-04-29 | [CG](#cg) | The Carlyle Group Inc. | Private Equity & Alternative Asset Managers | Asset Management | $15.24B | 15.23 |

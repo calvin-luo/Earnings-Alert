@@ -7,32 +7,32 @@ This table shows upcoming earnings calls for 7 financial services companies.
 ## Asset Management
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-07 | [BLK](#blk) | BlackRock, Inc. | Asset Management | Asset Management | $148.83B | 22.83 |
 
 ## FinTech
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-28 | [PYPL](#pypl) | PayPal Holdings, Inc. | FinTech | Credit Services | $68.14B | 17.26 |
 
 ## Insurance
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-29 | [MET](#met) | MetLife, Inc. | Insurance | Insurance - Life | $55.62B | 13.74 |
 
 ## Investment Banking
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-11 | [JPM](#jpm) | JP Morgan Chase & Co. | Investment Banking | Banks - Diversified | $657.00B | 11.89 |
 | 2025-04-14 | [GS](#gs) | Goldman Sachs Group, Inc. (The) | Investment Banking | Capital Markets | $171.49B | 13.60 |
 
 ## Payment Networks
 
 | Date | Ticker | Company | Category | Industry | Market Cap | P/E Ratio |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | 2025-04-21 | [V](#v) | Visa Inc. | Payment Networks | Credit Services | $645.77B | 33.78 |
 | 2025-04-29 | [MA](#ma) | Mastercard Incorporated | Payment Networks | Credit Services | $483.38B | 38.17 |
 
