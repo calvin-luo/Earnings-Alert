@@ -19,8 +19,8 @@ EARNINGS-ALERT/
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License
 
 ## Acknowledgments
 
-- Data provided via yfinance (Yahoo)
+Data provided via yfinance (Yahoo)
