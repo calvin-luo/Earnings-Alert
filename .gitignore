@@ -22,7 +22,8 @@ wheels/
 
 # Log files
 *.log
-earnings_alert.log
+data/earnings_alert.log
+data/*.log
 
 # Data files
 data/
