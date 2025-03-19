@@ -8,7 +8,9 @@ from earnings_alert import (
     get_earnings_date_for_ticker,
     fetch_company_info,
     update_alerts_markdown,
-    generate_markdown_table
+    generate_markdown_table,
+    generate_calendar_view,
+    generate_consolidated_table
 )
 
 # Setup basic logging
@@ -21,14 +23,8 @@ logger = logging.getLogger('test_earnings_alert')
 # Sample config with a few tickers from different categories
 test_config = {
     "display_options": {
-        "group_by_category": True
-    },
-    "financial_services_categories": {
-        "Investment Banking": ["JPM", "GS"],
-        "Asset Management": ["BLK"],
-        "Payment Networks": ["V", "MA"],
-        "Insurance": ["MET"],
-        "FinTech": ["PYPL"]
+        "show_pe_ratio": True,
+        "show_market_cap": True
     }
 }
 
@@ -69,6 +65,10 @@ def run_test():
     if earnings_data:
         # Generate markdown
         markdown = generate_markdown_table(earnings_data, test_config)
+        
+        # Also test the individual components
+        calendar_view = generate_calendar_view(earnings_data)
+        table_view = generate_consolidated_table(earnings_data, test_config['display_options'])
         
         # Save to test file
         with open('test_alerts.md', 'w') as f:
