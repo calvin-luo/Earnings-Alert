@@ -25,7 +25,6 @@ logging.getLogger('yfinance').setLevel(logging.WARNING)
 
 # load tracked tickers and alert rules
 def load_config():
-
     """Load configuration from files"""
     try:
         with open('config/tracked_tickers.txt', 'r') as f:
@@ -143,48 +142,12 @@ def fetch_company_info(ticker):
             '52w_low': info.get('fiftyTwoWeekLow', 'N/A')
         }
         
-        # Get financial services specific metrics
-        financial_metrics = {
-            'priceToBook': info.get('priceToBook', 'N/A'),
-            'returnOnEquity': info.get('returnOnEquity', 'N/A'),
-            'debtToEquity': info.get('debtToEquity', 'N/A'),
-            'profitMargins': info.get('profitMargins', 'N/A'),
-            'operatingMargins': info.get('operatingMargins', 'N/A'),
-            'netIncomeToCommon': info.get('netIncomeToCommon', 'N/A'),
-            'totalCash': info.get('totalCash', 'N/A'),
-            'totalDebt': info.get('totalDebt', 'N/A'),
-            'currentRatio': info.get('currentRatio', 'N/A'),
-            'earningsGrowth': info.get('earningsGrowth', 'N/A'),
-            'revenueGrowth': info.get('revenueGrowth', 'N/A')
-        }
-        
         # Format dividend yield as percentage if available
         if isinstance(additional_metrics['dividend_yield'], (int, float)):
             additional_metrics['dividend_yield'] = f"{additional_metrics['dividend_yield'] * 100:.2f}%"
         
-        # Combine all metrics
+        # Combine metrics
         company_info.update(additional_metrics)
-        company_info.update(financial_metrics)
-        
-        return company_info
-    except Exception as e:
-        logger.error(f"Error fetching info for {ticker}: {str(e)}")
-        return {
-            'name': ticker,
-            'market_cap': 'N/A',
-            'pe_ratio': 'N/A',
-            'sector': 'N/A',
-            'industry': 'N/A',
-            'forward_pe': 'N/A',
-            'dividend_yield': 'N/A',
-            'beta': 'N/A',
-            '52w_high': 'N/A',
-            '52w_low': 'N/A',
-            'priceToBook': 'N/A',
-            'returnOnEquity': 'N/A',
-            'debtToEquity': 'N/A',
-            'profitMargins': 'N/A'
-        }(additional_metrics)
         
         return company_info
     except Exception as e:
@@ -211,6 +174,7 @@ def fetch_earnings_data(tickers, rules):
     logger.info(f"Fetching earnings data for {len(tickers)} tickers from {first_day.strftime('%Y-%m-%d')} to {last_day.strftime('%Y-%m-%d')}")
     
     earnings_data = []
+    processed_tickers = set()  # Track processed tickers to avoid duplicates
     
     # Process tickers in batches to avoid overwhelming the API
     for i in range(0, len(tickers), batch_size):
@@ -218,6 +182,13 @@ def fetch_earnings_data(tickers, rules):
         logger.info(f"Processing batch {i//batch_size + 1}/{(len(tickers)-1)//batch_size + 1} ({len(batch)} tickers)")
         
         for ticker in batch:
+            # Skip if already processed
+            if ticker in processed_tickers:
+                logger.info(f"Skipping duplicate ticker: {ticker}")
+                continue
+                
+            processed_tickers.add(ticker)  # Mark ticker as processed
+            
             logger.info(f"Processing ticker: {ticker}")
             
             # Get earnings date
@@ -285,9 +256,6 @@ def generate_markdown_table(earnings_data, rules):
         return "No upcoming earnings calls this month."
     
     display_options = rules.get('display_options', {})
-    group_by_sector = display_options.get('group_by_sector', False)
-    group_by_date = display_options.get('group_by_date', False)
-    group_by_category = display_options.get('group_by_category', False)
     
     # Sort by earnings date first
     sorted_data = sorted(earnings_data, key=lambda x: x['earnings_date'])
@@ -298,101 +266,145 @@ def generate_markdown_table(earnings_data, rules):
     
     markdown = f"# Financial Services Earnings Calendar: {current_month} - {next_month}\n\n"
     markdown += f"*Last updated: {datetime.now().strftime('%Y-%m-%d')}*\n\n"
-    markdown += f"This table shows upcoming earnings calls for {len(earnings_data)} financial services companies.\n\n"
+    markdown += f"This calendar shows upcoming earnings calls for {len(earnings_data)} financial services companies.\n\n"
     
+    # Generate calendar view
+    markdown += generate_calendar_view(sorted_data)
+    
+    # Generate consolidated table view
+    markdown += "\n## Earnings Calls Details\n\n"
+    markdown += generate_consolidated_table(sorted_data, display_options)
+    
+    return markdown
+
+def generate_calendar_view(earnings_data):
+    """Generate a calendar view for the earnings calls"""
+    # Get current month and year
+    today = datetime.now()
+    month = today.month
+    year = today.year
+    
+    # Get the first day of current month and number of days in month
+    first_day = datetime(year, month, 1)
+    if month == 12:
+        last_day = datetime(year + 1, 1, 1) - timedelta(days=1)
+    else:
+        last_day = datetime(year, month + 1, 1) - timedelta(days=1)
+    
+    # Start from Monday (0) to Sunday (6)
+    first_weekday = first_day.weekday()
+    
+    # Create calendar header
+    calendar_md = "## Monthly Calendar\n\n"
+    calendar_md += "| Mon | Tue | Wed | Thu | Fri | Sat | Sun |\n"
+    calendar_md += "|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n"
+    
+    # Group earnings by date
+    earnings_by_date = {}
+    for entry in earnings_data:
+        date = entry['earnings_date']
+        if hasattr(date, 'day'):
+            day = date.day
+            entry_month = date.month
+            entry_year = date.year
+        else:
+            # If it's a string, parse it
+            try:
+                parsed_date = datetime.strptime(str(date), "%Y-%m-%d")
+                day = parsed_date.day
+                entry_month = parsed_date.month
+                entry_year = parsed_date.year
+            except:
+                continue
+                
+        # Only include dates in current month
+        if entry_month == month and entry_year == year:
+            if day not in earnings_by_date:
+                earnings_by_date[day] = []
+            earnings_by_date[day].append(entry['ticker'])
+    
+    # Generate calendar rows
+    calendar_day = 1
+    day_in_month = 1
+    
+    # Start with empty cells for days before the 1st of the month
+    current_row = [""] * first_weekday
+    
+    while day_in_month <= last_day.day:
+        # Check if this day has earnings calls
+        if day_in_month in earnings_by_date:
+            # Limit to first 5 tickers to avoid making cells too large
+            ticker_list = earnings_by_date[day_in_month][:5]
+            ticker_str = ", ".join(ticker_list)
+            
+            # Add "..." if there are more than 5 tickers
+            if len(earnings_by_date[day_in_month]) > 5:
+                ticker_str += ", ..."
+                
+            # Bold the date if it has earnings
+            cell_content = f"**{day_in_month}**<br>{ticker_str}"
+        else:
+            cell_content = str(day_in_month)
+            
+        current_row.append(cell_content)
+        
+        # Move to next day
+        calendar_day += 1
+        day_in_month += 1
+        
+        # Start a new row after Sunday
+        if calendar_day % 7 == 1:
+            calendar_md += "| " + " | ".join(current_row) + " |\n"
+            current_row = []
+    
+    # Add empty cells for days after the end of the month
+    if current_row:
+        current_row.extend([""] * (7 - len(current_row)))
+        calendar_md += "| " + " | ".join(current_row) + " |\n"
+    
+    return calendar_md
+
+def generate_consolidated_table(earnings_data, display_options):
+    """Generate a consolidated table of all earnings calls"""
     # Standard table headers
-    headers = ["Date", "Ticker", "Company", "Category", "Industry"]
+    headers = ["Date", "Ticker", "Company", "Industry"]
     if display_options.get('show_market_cap', True):
         headers.append("Market Cap")
     if display_options.get('show_pe_ratio', True):
         headers.append("P/E Ratio")
     
-    # Get financial service categories
-    financial_categories = rules.get('financial_services_categories', {})
+    result = ""
     
-    # Assign category to each company
-    for entry in sorted_data:
-        category = "Other Financial Services"
-        for cat_name, tickers in financial_categories.items():
-            if entry['ticker'] in tickers:
-                category = cat_name
-                break
-        entry['category'] = category
+    # Table header row
+    result += "| " + " | ".join(headers) + " |\n"
     
-    # Function to generate a table with given data
-    def generate_table(data, title=None):
-        result = ""
-        if title:
-            result += f"## {title}\n\n"
+    # Separator row with a dash in each cell
+    separator_row = []
+    for _ in headers:
+        separator_row.append("---")
+    result += "| " + " | ".join(separator_row) + " |\n"
+    
+    # Table rows
+    for entry in earnings_data:
+        date_str = entry['earnings_date'].strftime("%Y-%m-%d") if hasattr(entry['earnings_date'], 'strftime') else str(entry['earnings_date'])
+        market_cap_str = f"${entry['market_cap'] / 1e9:.2f}B" if isinstance(entry['market_cap'], (int, float)) else entry['market_cap']
+        pe_str = f"{entry['pe_ratio']:.2f}" if isinstance(entry['pe_ratio'], (int, float)) else entry['pe_ratio']
         
-        # Table header row
-        result += "| " + " | ".join(headers) + " |\n"
+        row = [
+            date_str,
+            entry['ticker'],
+            entry['name'],
+            entry['industry']
+        ]
         
-        # Proper separator row with a dash in each cell
-        separator_row = []
-        for _ in headers:
-            separator_row.append("---")
-        result += "| " + " | ".join(separator_row) + " |\n"
+        if display_options.get('show_market_cap', True):
+            row.append(market_cap_str)
+        if display_options.get('show_pe_ratio', True):
+            row.append(pe_str)
         
-        # Table rows
-        for entry in data:
-            date_str = entry['earnings_date'].strftime("%Y-%m-%d") if hasattr(entry['earnings_date'], 'strftime') else str(entry['earnings_date'])
-            market_cap_str = f"${entry['market_cap'] / 1e9:.2f}B" if isinstance(entry['market_cap'], (int, float)) else entry['market_cap']
-            pe_str = f"{entry['pe_ratio']:.2f}" if isinstance(entry['pe_ratio'], (int, float)) else entry['pe_ratio']
-            
-            row = [
-                date_str,
-                entry['ticker'],
-                entry['name'],
-                entry['category'],
-                entry['industry']
-            ]
-            
-            if display_options.get('show_market_cap', True):
-                row.append(market_cap_str)
-            if display_options.get('show_pe_ratio', True):
-                row.append(pe_str)
-            
-            result += "| " + " | ".join(row) + " |\n"
-        
-        result += "\n"
-        return result
+        result += "| " + " | ".join(row) + " |\n"
     
-    # Generate tables based on grouping options
-    if group_by_category:
-        # Group by financial service category
-        category_groups = {}
-        for entry in sorted_data:
-            category = entry['category']
-            if category not in category_groups:
-                category_groups[category] = []
-            category_groups[category].append(entry)
-        
-        # Sort categories by name
-        for category, entries in sorted(category_groups.items()):
-            # Sort entries by date within each category
-            sorted_entries = sorted(entries, key=lambda x: x['earnings_date'])
-            markdown += generate_table(sorted_entries, f"{category}")
-    
-    elif group_by_date:
-        # Group by date only
-        date_groups = {}
-        for entry in sorted_data:
-            date_key = entry['earnings_date'].strftime("%Y-%m-%d") if hasattr(entry['earnings_date'], 'strftime') else str(entry['earnings_date'])
-            if date_key not in date_groups:
-                date_groups[date_key] = []
-            date_groups[date_key].append(entry)
-        
-        for date, entries in sorted(date_groups.items()):
-            markdown += generate_table(entries, f"Earnings on {date}")
-    
-    else:
-        # No grouping
-        markdown += generate_table(sorted_data)
-    
-    # REMOVED: Detailed company information sections
-    
-    return markdown
+    return result
 
 def update_alerts_markdown(markdown_content):
     """Update the alerts.md file with the new markdown content"""
