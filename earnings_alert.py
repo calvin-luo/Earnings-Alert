@@ -146,11 +146,14 @@ def fetch_company_info(ticker):
 
 def fetch_earnings_data(tickers, rules):
     """Fetch earnings data for the list of tickers using rules from config"""
-    look_ahead_days = rules.get('look_ahead_days', 30)
     batch_size = rules.get('batch_size', 20)
+    look_ahead_days = rules.get('look_ahead_days', 30)
     
-    first_day, last_day = get_current_month_dates(look_ahead_days)
-    logger.info(f"Fetching earnings data for {len(tickers)} tickers from {first_day.strftime('%Y-%m-%d')} to {last_day.strftime('%Y-%m-%d')}")
+    # Calculate exact date range - today to look_ahead_days in the future
+    today = datetime.now().date()
+    end_date = today + timedelta(days=look_ahead_days)
+    
+    logger.info(f"Fetching earnings data for {len(tickers)} tickers from {today.strftime('%Y-%m-%d')} to {end_date.strftime('%Y-%m-%d')}")
     
     earnings_data = []
     processed_tickers = set()  # Track processed tickers to avoid duplicates
@@ -178,7 +181,7 @@ def fetch_earnings_data(tickers, rules):
                 continue
             
             # Check if the earnings date falls within our date range
-            if first_day.date() <= earnings_date <= last_day.date():
+            if today <= earnings_date <= end_date:
                 # Get additional company information
                 company_info = fetch_company_info(ticker)
                 

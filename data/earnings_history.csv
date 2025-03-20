@@ -9,13 +9,13 @@ AMGN,2025-04-30,Amgen Inc.,171180392448,42.212566,Healthcare,Drug Manufacturers 
 AMT,2025-04-28,American Tower Corporation (REI,99923607552,30.890173,Real Estate,REIT - Specialty
 AMZN,2025-04-28,"Amazon.com, Inc.",2072274141184,34.855614,Consumer Cyclical,Internet Retail
 AXP,2025-04-17,American Express Company,189755424768,18.756063,Financial Services,Credit Services
-BA,2025-04-22,Boeing Company (The),129880489984,N/A,Industrials,Aerospace & Defense
+BA,2025-04-22,Boeing Company (The),129880489984,,Industrials,Aerospace & Defense
 BAC,2025-04-15,Bank of America Corporation,320914194432,12.987692,Financial Services,Banks - Diversified
 BIIB,2025-04-22,Biogen Inc.,20701816832,12.650268,Healthcare,Drug Manufacturers - General
 BK,2025-04-11,The Bank of New York Mellon Cor,60238020608,14.465517,Financial Services,Banks - Diversified
 BKNG,2025-04-30,Booking Holdings Inc. Common St,150683795456,25.906292,Consumer Cyclical,Travel Services
 BLK,2025-04-07,"BlackRock, Inc.",148612825088,22.796618,Financial Services,Asset Management
-BMY,2025-04-24,Bristol-Myers Squibb Company,121920946176,N/A,Healthcare,Drug Manufacturers - General
+BMY,2025-04-24,Bristol-Myers Squibb Company,121920946176,,Healthcare,Drug Manufacturers - General
 C,2025-04-15,"Citigroup, Inc.",134627254272,11.808265,Financial Services,Banks - Diversified
 CAT,2025-04-23,"Caterpillar, Inc.",161837334528,15.266907,Industrials,Farm & Heavy Construction Machinery
 CHTR,2025-04-24,"Charter Communications, Inc.",50133782528,10.092052,Communication Services,Telecom Services
@@ -40,7 +40,7 @@ GOOGL,2025-04-23,Alphabet Inc.,1969564549120,20.01099,Communication Services,Int
 GS,2025-04-14,"Goldman Sachs Group, Inc. (The)",173215711232,13.606935,Financial Services,Capital Markets
 HON,2025-04-23,Honeywell International Inc.,135605592064,23.982758,Industrials,Conglomerates
 IBM,2025-04-23,International Business Machines,233939435520,39.297504,Technology,Information Technology Services
-INTC,2025-04-23,Intel Corporation,104439603200,N/A,Technology,Semiconductors
+INTC,2025-04-23,Intel Corporation,104439603200,,Technology,Semiconductors
 JNJ,2025-04-15,Johnson & Johnson,395817975808,28.346088,Healthcare,Drug Manufacturers - General
 JPM,2025-04-11,JP Morgan Chase & Co.,668577890304,11.890104,Financial Services,Banks - Diversified
 KHC,2025-04-29,The Kraft Heinz Company,36315750400,13.4639635,Consumer Defensive,Packaged Foods
@@ -77,6 +77,6 @@ UPS,2025-04-21,"United Parcel Service, Inc.",99559587840,17.402964,Industrials,I
 USB,2025-04-16,U.S. Bancorp,66495864832,11.261214,Financial Services,Banks - Regional
 V,2025-04-21,Visa Inc.,645773393920,33.784294,Financial Services,Credit Services
 VZ,2025-04-22,Verizon Communications Inc.,186195296256,10.690997,Communication Services,Telecom Services
-WBA,2025-04-08,"Walgreens Boots Alliance, Inc.",9650442240,N/A,Healthcare,Pharmaceutical Retailers
+WBA,2025-04-08,"Walgreens Boots Alliance, Inc.",9650442240,,Healthcare,Pharmaceutical Retailers
 WFC,2025-04-11,Wells Fargo & Company,239248703488,13.253188,Financial Services,Banks - Diversified
 XOM,2025-04-03,Exxon Mobil Corporation,500780171264,14.498744,Energy,Oil & Gas Integrated
