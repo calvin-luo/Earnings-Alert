@@ -23,23 +23,23 @@ logger = logging.getLogger('earnings_alert')
 # set yfinance logger to WARNING to reduce noise
 logging.getLogger('yfinance').setLevel(logging.WARNING)
 
-# load tracked tickers and alert rules
+# S&P 100 companies
+SP100_TICKERS = [
+    "AAPL", "ABBV", "ABT", "ACN", "ADBE", "AIG", "ALL", "AMGN", "AMT", "AMZN", 
+    "AXP", "BA", "BAC", "BIIB", "BK", "BKNG", "BLK", "BMY", "BRKB", "C", 
+    "CAT", "CHTR", "CL", "CMCSA", "COF", "COP", "COST", "CRM", "CSCO", "CVS", 
+    "CVX", "DD", "DHR", "DIS", "DOW", "DUK", "EMR", "EXC", "F", "FB", 
+    "FDX", "GD", "GE", "GILD", "GM", "GOOG", "GOOGL", "GS", "HD", "HON", 
+    "IBM", "INTC", "JNJ", "JPM", "KHC", "KMI", "KO", "LLY", "LMT", "LOW", 
+    "MA", "MCD", "MDLZ", "MDT", "MET", "MMM", "MO", "MRK", "MS", "MSFT", 
+    "NEE", "NFLX", "NKE", "NVDA", "ORCL", "OXY", "PEP", "PFE", "PG", "PM", 
+    "PYPL", "QCOM", "RTX", "SBUX", "SO", "SPG", "T", "TGT", "TMO", "TXN", 
+    "UNH", "UNP", "UPS", "USB", "V", "VZ", "WBA", "WFC", "WMT", "XOM"
+]
+
+# load alert rules
 def load_config():
-    """Load configuration from files"""
-    try:
-        with open('config/tracked_tickers.txt', 'r') as f:
-            tickers = []
-            for line in f:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    # Extract just the ticker symbol (before any comment)
-                    ticker = line.split('#')[0].strip()
-                    if ticker:
-                        tickers.append(ticker)
-    except FileNotFoundError:
-        logger.error("Tracked tickers file not found!")
-        tickers = []
-    
+    """Load configuration from alert_rules.json file"""
     try:
         with open('config/alert_rules.json', 'r') as f:
             rules = json.load(f)
@@ -47,7 +47,7 @@ def load_config():
         logger.error("Alert rules file not found!")
         rules = {"days_before_alert": 7}
     
-    return tickers, rules
+    return rules
 
 # get last day of month
 def get_current_month_dates(days_ahead=0):
@@ -133,22 +133,6 @@ def fetch_company_info(ticker):
             'industry': info.get('industry', 'N/A')
         }
         
-        # Get additional metrics if available
-        additional_metrics = {
-            'forward_pe': info.get('forwardPE', 'N/A'),
-            'dividend_yield': info.get('dividendYield', 'N/A'),
-            'beta': info.get('beta', 'N/A'),
-            '52w_high': info.get('fiftyTwoWeekHigh', 'N/A'),
-            '52w_low': info.get('fiftyTwoWeekLow', 'N/A')
-        }
-        
-        # Format dividend yield as percentage if available
-        if isinstance(additional_metrics['dividend_yield'], (int, float)):
-            additional_metrics['dividend_yield'] = f"{additional_metrics['dividend_yield'] * 100:.2f}%"
-        
-        # Combine metrics
-        company_info.update(additional_metrics)
-        
         return company_info
     except Exception as e:
         logger.error(f"Error fetching info for {ticker}: {str(e)}")
@@ -157,12 +141,7 @@ def fetch_company_info(ticker):
             'market_cap': 'N/A',
             'pe_ratio': 'N/A',
             'sector': 'N/A',
-            'industry': 'N/A',
-            'forward_pe': 'N/A',
-            'dividend_yield': 'N/A',
-            'beta': 'N/A',
-            '52w_high': 'N/A',
-            '52w_low': 'N/A'
+            'industry': 'N/A'
         }
 
 def fetch_earnings_data(tickers, rules):
@@ -253,149 +232,31 @@ def update_earnings_history(earnings_data):
 def generate_markdown_table(earnings_data, rules):
     """Generate a markdown table from the earnings data with options from rules"""
     if not earnings_data:
-        return "No upcoming earnings calls this month."
+        return "No upcoming earnings calls found."
     
     display_options = rules.get('display_options', {})
     
-    # Sort by earnings date first
+    # Sort earnings by date
     sorted_data = sorted(earnings_data, key=lambda x: x['earnings_date'])
     
-    # Get current date info
+    # Generate the header
     today = datetime.now()
-    current_month_name = today.strftime("%B")
-    current_year = today.strftime("%Y")
+    start_date = today.strftime("%Y-%m-%d")
+    end_date = (today + timedelta(days=rules.get('look_ahead_days', 30))).strftime("%Y-%m-%d")
     
-    markdown = f"# Financial Services Earnings Calendar: {current_month_name} {current_year}\n\n"
+    markdown = f"# S&P 100 Upcoming Earnings Calls\n\n"
     markdown += f"*Last updated: {today.strftime('%Y-%m-%d')}*\n\n"
-    markdown += f"This calendar shows earnings calls for {len(earnings_data)} financial services companies.\n\n"
+    markdown += f"This table shows upcoming earnings calls for S&P 100 companies from {start_date} to {end_date}.\n\n"
     
-    # Generate calendar view (shows ALL earnings calls for the entire month)
-    markdown += generate_calendar_view(sorted_data)
-    
-    # Filter for only upcoming earnings calls (today and future)
-    today_date = today.date()
-    upcoming_earnings = [
-        entry for entry in sorted_data 
-        if (hasattr(entry['earnings_date'], 'date') and entry['earnings_date'] >= today_date) or
-           (isinstance(entry['earnings_date'], str) and 
-            datetime.strptime(entry['earnings_date'], "%Y-%m-%d").date() >= today_date)
-    ]
-    
-    # Generate consolidated table view (only upcoming earnings)
-    if upcoming_earnings:
-        markdown += f"\n## Upcoming Earnings Calls - {current_month_name}\n\n"
-        markdown += generate_consolidated_table(upcoming_earnings, display_options)
-    else:
-        markdown += "\n## Upcoming Earnings Calls\n\n"
-        markdown += "No more earnings calls scheduled for this month.\n\n"
+    # Generate table of upcoming earnings
+    markdown += generate_consolidated_table(sorted_data, display_options)
     
     return markdown
-
-def generate_calendar_view(earnings_data):
-    """Generate a calendar view for the earnings calls for the entire month"""
-    # Get current month and year
-    today = datetime.now()
-    month = today.month
-    year = today.year
-    month_name = today.strftime("%B")
-    
-    # Get the first day of current month and number of days in month
-    first_day = datetime(year, month, 1)
-    if month == 12:
-        last_day = datetime(year + 1, 1, 1) - timedelta(days=1)
-    else:
-        last_day = datetime(year, month + 1, 1) - timedelta(days=1)
-    
-    # Start from Monday (0) to Sunday (6)
-    first_weekday = first_day.weekday()
-    
-    # Create calendar header
-    calendar_md = f"## {month_name} {year} Calendar\n\n"
-    calendar_md += "| Mon | Tue | Wed | Thu | Fri | Sat | Sun |\n"
-    calendar_md += "|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n"
-    
-    # Group earnings by date (for the entire month)
-    earnings_by_date = {}
-    for entry in earnings_data:
-        # Extract the date information
-        if hasattr(entry['earnings_date'], 'day'):
-            date = entry['earnings_date']
-            day = date.day
-            entry_month = date.month
-            entry_year = date.year
-        else:
-            # If it's a string, parse it
-            try:
-                date = datetime.strptime(str(entry['earnings_date']), "%Y-%m-%d").date()
-                day = date.day
-                entry_month = date.month
-                entry_year = date.year
-            except:
-                continue
-                
-        # Only include dates in current month
-        if entry_month == month and entry_year == year:
-            if day not in earnings_by_date:
-                earnings_by_date[day] = []
-            earnings_by_date[day].append(entry['ticker'])
-    
-    # Generate calendar rows
-    calendar_day = 1
-    day_in_month = 1
-    
-    # Start with empty cells for days before the 1st of the month
-    current_row = [""] * first_weekday
-    
-    while day_in_month <= last_day.day:
-        # Check if this day has earnings calls
-        if day_in_month in earnings_by_date:
-            # Limit to first 5 tickers to avoid making cells too large
-            ticker_list = earnings_by_date[day_in_month][:5]
-            ticker_str = ", ".join(ticker_list)
-            
-            # Add "..." if there are more than 5 tickers
-            if len(earnings_by_date[day_in_month]) > 5:
-                ticker_str += ", ..."
-            
-            # Highlight current date and past dates differently
-            current_date = datetime(year, month, day_in_month).date()
-            today_date = datetime.now().date()
-            
-            if current_date == today_date:
-                # Bold and mark today's date with asterisks
-                cell_content = f"**{day_in_month}**<br>TODAY<br>{ticker_str}"
-            elif current_date < today_date:
-                # Past dates with earnings - show in lighter style 
-                cell_content = f"{day_in_month}<br><i>{ticker_str}</i>"
-            else:
-                # Future dates with earnings - bold
-                cell_content = f"**{day_in_month}**<br>{ticker_str}"
-        else:
-            # Regular day without earnings
-            cell_content = str(day_in_month)
-            
-        current_row.append(cell_content)
-        
-        # Move to next day
-        calendar_day += 1
-        day_in_month += 1
-        
-        # Start a new row after Sunday
-        if calendar_day % 7 == 1:
-            calendar_md += "| " + " | ".join(current_row) + " |\n"
-            current_row = []
-    
-    # Add empty cells for days after the end of the month
-    if current_row:
-        current_row.extend([""] * (7 - len(current_row)))
-        calendar_md += "| " + " | ".join(current_row) + " |\n"
-    
-    return calendar_md
 
 def generate_consolidated_table(earnings_data, display_options):
     """Generate a consolidated table of all earnings calls"""
     # Standard table headers
-    headers = ["Date", "Ticker", "Company", "Industry"]
+    headers = ["Date", "Ticker", "Company", "Sector", "Industry"]
     if display_options.get('show_market_cap', True):
         headers.append("Market Cap")
     if display_options.get('show_pe_ratio', True):
@@ -422,6 +283,7 @@ def generate_consolidated_table(earnings_data, display_options):
             date_str,
             entry['ticker'],
             entry['name'],
+            entry['sector'],
             entry['industry']
         ]
         
@@ -500,18 +362,17 @@ def main():
     os.makedirs('config', exist_ok=True)
     
     # Load configuration
-    tickers, rules = load_config()
+    rules = load_config()
     
-    if not tickers:
-        logger.warning("No tickers to track. Please add tickers to config/tracked_tickers.txt")
-        return
+    # Use S&P 100 tickers
+    tickers = SP100_TICKERS
     
     # Fetch earnings data
     earnings_data = fetch_earnings_data(tickers, rules)
     
     if not earnings_data:
-        logger.info("No upcoming earnings calls found for the current month")
-        update_alerts_markdown("No upcoming earnings calls this month.")
+        logger.info("No upcoming earnings calls found")
+        update_alerts_markdown("No upcoming earnings calls found.")
         log_update([])
         return
     

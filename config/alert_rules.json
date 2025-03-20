@@ -1,53 +1,12 @@
 {
     "days_before_alert": 7,
-    "look_ahead_days": 60,
+    "look_ahead_days": 30,
     "batch_size": 10,
-    "financial_metrics_focus": true,
-    "sectors_of_interest": [
-        "Financial Services"
-    ],
-    "industries_of_interest": [
-        "Banks",
-        "Capital Markets",
-        "Insurance",
-        "Financial Exchanges",
-        "Consumer Finance",
-        "Asset Management",
-        "Investment Banking",
-        "Mortgage Finance",
-        "Financial Technology"
-    ],
     "min_market_cap": 1000000000,
     "display_options": {
         "show_pe_ratio": true,
         "show_market_cap": true,
         "show_sector": true,
-        "show_industry": true,
-        "group_by_category": true,
-        "group_by_date": false
-    },
-    "additional_metrics": [
-        "forwardPE",
-        "dividendYield",
-        "beta",
-        "fiftyTwoWeekHigh",
-        "fiftyTwoWeekLow",
-        "priceToBook",
-        "returnOnEquity",
-        "debtToEquity",
-        "profitMargins"
-    ],
-    "financial_services_categories": {
-        "Investment Banking & Capital Markets": ["JPM", "GS", "MS", "C", "COWN", "EVR", "LAZ", "PJC", "RJF", "SF"],
-        "Diversified Banks": ["BAC", "WFC", "USB", "TFC", "PNC", "FITB", "KEY", "RF", "CFG", "MTB"],
-        "Asset Management & Custody": ["BLK", "BK", "NTRS", "STT", "TROW", "BEN", "IVZ", "AMG", "JHG", "AB"],
-        "Financial Exchanges & Data": ["ICE", "CME", "NDAQ", "SPGI", "MKTX", "TW", "CBOE", "FCF", "COIN"],
-        "Consumer Finance & Payment Networks": ["V", "MA", "AXP", "DFS", "COF", "SYF", "PYPL", "AFRM", "SQ", "FISV"],
-        "Brokerage & Wealth Management": ["SCHW", "IBKR", "AMTD", "LPLA", "MORN", "HOOD", "RBC", "SEIC"],
-        "Insurance - Life & Health": ["MET", "PRU", "AFL", "UNM", "LNC", "PFG", "EQH", "BHF", "GL", "CNO"],
-        "Insurance - Property & Casualty": ["ALL", "TRV", "PGR", "CB", "HIG", "CINF", "L", "RNR", "WRB", "BRO"],
-        "Financial Technology (FinTech)": ["FIS", "FISV", "GPN", "FICO", "ENV", "EEFT", "VIRT", "MKTX", "FLT", "WEX"],
-        "Mortgage Finance & REITs": ["BXMT", "NLY", "AGNC", "TWO", "CIM", "PMT", "DX", "STWD", "ABR", "RC"],
-        "Private Equity & Alternative Asset Managers": ["BX", "KKR", "APO", "CG", "ARES", "BAM", "OWL", "TPG", "HLNE", "TSLX"]
+        "show_industry": true
     }
 }
