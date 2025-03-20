@@ -8,9 +8,8 @@ A Python tool that automatically tracks and displays upcoming earnings calls for
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## Acknowledgments
 
-- Data provided by Yahoo Finance
-- Developed as a monitoring tool for investors and market watchers
+Data provided by Yahoo Finance

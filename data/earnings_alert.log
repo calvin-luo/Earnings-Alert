@@ -6892,3 +6892,425 @@
 2025-03-19 21:31:03,835 - earnings_alert - INFO - Updated alerts.md with new earnings data
 2025-03-19 21:31:03,840 - earnings_alert - INFO - Logged update at 2025-03-19 21:31:03
 2025-03-19 21:31:03,841 - earnings_alert - INFO - Completed earnings alert update. Found 20 upcoming earnings calls.
+2025-03-19 21:38:36,796 - earnings_alert - INFO - starting earnings alert update
+2025-03-19 21:38:36,799 - earnings_alert - INFO - fetching earnings data for 100 tickers from 2025-03-19 to 2025-04-18
+2025-03-19 21:38:36,800 - earnings_alert - INFO - processing batch 1/10 (10 tickers)
+2025-03-19 21:38:36,800 - earnings_alert - INFO - processing ticker: AAPL
+2025-03-19 21:38:36,805 - peewee - DEBUG - ('CREATE TABLE IF NOT EXISTS "_cookieschema" ("strategy" VARCHAR(255) NOT NULL PRIMARY KEY, "fetch_date" DATETIME NOT NULL, "cookie_bytes" BLOB NOT NULL) WITHOUT ROWID', [])
+2025-03-19 21:38:36,806 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+2025-03-19 21:38:36,811 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query1.finance.yahoo.com:443
+2025-03-19 21:38:36,962 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/1.1" 200 11
+2025-03-19 21:38:36,965 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): query2.finance.yahoo.com:443
+2025-03-19 21:38:37,112 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AAPL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AAPL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:37,113 - earnings_alert - INFO - earnings date 2025-04-30 for AAPL is outside our date range
+2025-03-19 21:38:37,114 - earnings_alert - INFO - processing ticker: ABBV
+2025-03-19 21:38:37,190 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ABBV?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ABBV&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:37,191 - earnings_alert - INFO - earnings date 2025-04-24 for ABBV is outside our date range
+2025-03-19 21:38:37,192 - earnings_alert - INFO - processing ticker: ABT
+2025-03-19 21:38:37,269 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ABT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ABT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:37,348 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ABT?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=ABT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:37,426 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=ABT&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1222
+2025-03-19 21:38:37,477 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/ABT?symbol=ABT&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:37,478 - earnings_alert - INFO - added earnings entry for ABT on 2025-04-15
+2025-03-19 21:38:37,478 - earnings_alert - INFO - processing ticker: ACN
+2025-03-19 21:38:37,575 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ACN?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ACN&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 21:38:37,688 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ACN?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=ACN&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2933
+2025-03-19 21:38:37,911 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=ACN&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1132
+2025-03-19 21:38:37,995 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/ACN?symbol=ACN&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:37,995 - earnings_alert - INFO - added earnings entry for ACN on 2025-03-20
+2025-03-19 21:38:37,996 - earnings_alert - INFO - processing ticker: ADBE
+2025-03-19 21:38:38,053 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ADBE?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ADBE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 358
+2025-03-19 21:38:38,054 - earnings_alert - INFO - earnings date 2025-06-11 for ADBE is outside our date range
+2025-03-19 21:38:38,054 - earnings_alert - INFO - processing ticker: AIG
+2025-03-19 21:38:38,110 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AIG?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AIG&crumb=v1WWQHyu6p3 HTTP/1.1" 200 383
+2025-03-19 21:38:38,111 - earnings_alert - INFO - earnings date 2025-04-29 for AIG is outside our date range
+2025-03-19 21:38:38,111 - earnings_alert - INFO - processing ticker: ALL
+2025-03-19 21:38:38,158 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ALL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ALL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:38,159 - earnings_alert - INFO - earnings date 2025-04-29 for ALL is outside our date range
+2025-03-19 21:38:38,159 - earnings_alert - INFO - processing ticker: AMGN
+2025-03-19 21:38:38,220 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AMGN?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AMGN&crumb=v1WWQHyu6p3 HTTP/1.1" 200 383
+2025-03-19 21:38:38,220 - earnings_alert - INFO - earnings date 2025-04-30 for AMGN is outside our date range
+2025-03-19 21:38:38,221 - earnings_alert - INFO - processing ticker: AMT
+2025-03-19 21:38:38,332 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AMT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AMT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 383
+2025-03-19 21:38:38,332 - earnings_alert - INFO - earnings date 2025-04-28 for AMT is outside our date range
+2025-03-19 21:38:38,332 - earnings_alert - INFO - processing ticker: AMZN
+2025-03-19 21:38:38,382 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AMZN?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AMZN&crumb=v1WWQHyu6p3 HTTP/1.1" 200 336
+2025-03-19 21:38:38,383 - earnings_alert - INFO - earnings date 2025-04-28 for AMZN is outside our date range
+2025-03-19 21:38:38,383 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:38:40,383 - earnings_alert - INFO - processing batch 2/10 (10 tickers)
+2025-03-19 21:38:40,383 - earnings_alert - INFO - processing ticker: AXP
+2025-03-19 21:38:40,466 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AXP?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=AXP&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:38:40,527 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/AXP?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=AXP&crumb=v1WWQHyu6p3 HTTP/1.1" 200 3199
+2025-03-19 21:38:40,588 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=AXP&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1211
+2025-03-19 21:38:40,655 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/AXP?symbol=AXP&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:40,656 - earnings_alert - INFO - added earnings entry for AXP on 2025-04-17
+2025-03-19 21:38:40,656 - earnings_alert - INFO - processing ticker: BA
+2025-03-19 21:38:40,707 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 389
+2025-03-19 21:38:40,708 - earnings_alert - INFO - earnings date 2025-04-22 for BA is outside our date range
+2025-03-19 21:38:40,708 - earnings_alert - INFO - processing ticker: BAC
+2025-03-19 21:38:40,806 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BAC?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BAC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:38:40,889 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BAC?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BAC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:40,950 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=BAC&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1135
+2025-03-19 21:38:41,033 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/BAC?symbol=BAC&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:41,034 - earnings_alert - INFO - added earnings entry for BAC on 2025-04-15
+2025-03-19 21:38:41,034 - earnings_alert - INFO - processing ticker: BIIB
+2025-03-19 21:38:41,082 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BIIB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BIIB&crumb=v1WWQHyu6p3 HTTP/1.1" 200 333
+2025-03-19 21:38:41,082 - earnings_alert - INFO - earnings date 2025-04-22 for BIIB is outside our date range
+2025-03-19 21:38:41,083 - earnings_alert - INFO - processing ticker: BK
+2025-03-19 21:38:41,153 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BK?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 374
+2025-03-19 21:38:41,258 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BK?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:41,323 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=BK&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1126
+2025-03-19 21:38:41,392 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/BK?symbol=BK&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 360
+2025-03-19 21:38:41,392 - earnings_alert - INFO - added earnings entry for BK on 2025-04-11
+2025-03-19 21:38:41,392 - earnings_alert - INFO - processing ticker: BKNG
+2025-03-19 21:38:41,465 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BKNG?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BKNG&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:41,465 - earnings_alert - INFO - earnings date 2025-04-30 for BKNG is outside our date range
+2025-03-19 21:38:41,466 - earnings_alert - INFO - processing ticker: BLK
+2025-03-19 21:38:41,539 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BLK?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BLK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 389
+2025-03-19 21:38:41,614 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BLK?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=BLK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:41,709 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=BLK&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1149
+2025-03-19 21:38:41,816 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/BLK?symbol=BLK&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:41,818 - earnings_alert - INFO - added earnings entry for BLK on 2025-04-07
+2025-03-19 21:38:41,818 - earnings_alert - INFO - processing ticker: BMY
+2025-03-19 21:38:41,894 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BMY?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BMY&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 21:38:41,895 - earnings_alert - INFO - earnings date 2025-04-24 for BMY is outside our date range
+2025-03-19 21:38:41,895 - earnings_alert - INFO - processing ticker: BRKB
+2025-03-19 21:38:41,971 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BRKB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BRKB&crumb=v1WWQHyu6p3 HTTP/1.1" 404 110
+2025-03-19 21:38:41,972 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['csrf', 1, 0])
+2025-03-19 21:38:41,974 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): guce.yahoo.com:443
+2025-03-19 21:38:42,204 - urllib3.connectionpool - DEBUG - https://guce.yahoo.com:443 "GET /consent HTTP/1.1" 302 0
+2025-03-19 21:38:42,207 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): www.yahoo.com:443
+2025-03-19 21:38:42,859 - urllib3.connectionpool - DEBUG - https://www.yahoo.com:443 "GET /?guccounter=1 HTTP/1.1" 200 None
+2025-03-19 21:38:43,025 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+2025-03-19 21:38:43,069 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/1.1" 200 11
+2025-03-19 21:38:43,169 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/BRKB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BRKB&crumb=v1WWQHyu6p3 HTTP/1.1" 404 110
+2025-03-19 21:38:43,170 - yfinance - ERROR - 404 Client Error: Not Found for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/BRKB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=BRKB&crumb=v1WWQHyu6p3
+2025-03-19 21:38:43,320 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1185
+2025-03-19 21:38:43,326 - yfinance - ERROR - BRKB: $BRKB: possibly delisted; no earnings dates found
+2025-03-19 21:38:43,406 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1185
+2025-03-19 21:38:43,409 - yfinance - ERROR - BRKB: $BRKB: possibly delisted; no earnings dates found
+2025-03-19 21:38:43,409 - earnings_alert - DEBUG - method 2 failed for BRKB: 'NoneType' object has no attribute 'empty'
+2025-03-19 21:38:43,481 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1185
+2025-03-19 21:38:43,483 - yfinance - ERROR - BRKB: $BRKB: possibly delisted; no earnings dates found
+2025-03-19 21:38:43,483 - earnings_alert - DEBUG - method 3 failed for BRKB: 'NoneType' object has no attribute 'empty'
+2025-03-19 21:38:43,484 - earnings_alert - INFO - couldn't find earnings date for BRKB using any method
+2025-03-19 21:38:43,484 - earnings_alert - INFO - processing ticker: C
+2025-03-19 21:38:43,563 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/C?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=C&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:38:43,630 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/C?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=C&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2986
+2025-03-19 21:38:43,689 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=C&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1122
+2025-03-19 21:38:43,751 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/C?symbol=C&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 359
+2025-03-19 21:38:43,752 - earnings_alert - INFO - added earnings entry for C on 2025-04-15
+2025-03-19 21:38:43,752 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:38:45,753 - earnings_alert - INFO - processing batch 3/10 (10 tickers)
+2025-03-19 21:38:45,753 - earnings_alert - INFO - processing ticker: CAT
+2025-03-19 21:38:45,828 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CAT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CAT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:45,828 - earnings_alert - INFO - earnings date 2025-04-23 for CAT is outside our date range
+2025-03-19 21:38:45,828 - earnings_alert - INFO - processing ticker: CHTR
+2025-03-19 21:38:45,885 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CHTR?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CHTR&crumb=v1WWQHyu6p3 HTTP/1.1" 200 336
+2025-03-19 21:38:45,885 - earnings_alert - INFO - earnings date 2025-04-24 for CHTR is outside our date range
+2025-03-19 21:38:45,886 - earnings_alert - INFO - processing ticker: CL
+2025-03-19 21:38:45,943 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:38:45,943 - earnings_alert - INFO - earnings date 2025-04-25 for CL is outside our date range
+2025-03-19 21:38:45,943 - earnings_alert - INFO - processing ticker: CMCSA
+2025-03-19 21:38:45,992 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CMCSA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CMCSA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:38:45,993 - earnings_alert - INFO - earnings date 2025-04-24 for CMCSA is outside our date range
+2025-03-19 21:38:45,993 - earnings_alert - INFO - processing ticker: COF
+2025-03-19 21:38:46,086 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/COF?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=COF&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:46,086 - earnings_alert - INFO - earnings date 2025-04-23 for COF is outside our date range
+2025-03-19 21:38:46,086 - earnings_alert - INFO - processing ticker: COP
+2025-03-19 21:38:46,179 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/COP?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=COP&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:46,179 - earnings_alert - INFO - earnings date 2025-04-30 for COP is outside our date range
+2025-03-19 21:38:46,179 - earnings_alert - INFO - processing ticker: COST
+2025-03-19 21:38:46,275 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/COST?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=COST&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 21:38:46,275 - earnings_alert - INFO - earnings date 2025-05-29 for COST is outside our date range
+2025-03-19 21:38:46,275 - earnings_alert - INFO - processing ticker: CRM
+2025-03-19 21:38:46,355 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CRM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CRM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:38:46,355 - earnings_alert - INFO - earnings date 2025-05-27 for CRM is outside our date range
+2025-03-19 21:38:46,355 - earnings_alert - INFO - processing ticker: CSCO
+2025-03-19 21:38:46,429 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CSCO?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CSCO&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:46,430 - earnings_alert - INFO - earnings date 2025-05-13 for CSCO is outside our date range
+2025-03-19 21:38:46,430 - earnings_alert - INFO - processing ticker: CVS
+2025-03-19 21:38:46,501 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CVS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CVS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 391
+2025-03-19 21:38:46,501 - earnings_alert - INFO - earnings date 2025-04-29 for CVS is outside our date range
+2025-03-19 21:38:46,501 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:38:48,503 - earnings_alert - INFO - processing batch 4/10 (10 tickers)
+2025-03-19 21:38:48,503 - earnings_alert - INFO - processing ticker: CVX
+2025-03-19 21:38:48,610 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/CVX?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=CVX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 391
+2025-03-19 21:38:48,610 - earnings_alert - INFO - earnings date 2025-04-24 for CVX is outside our date range
+2025-03-19 21:38:48,610 - earnings_alert - INFO - processing ticker: DD
+2025-03-19 21:38:48,690 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/DD?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=DD&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:38:48,691 - earnings_alert - INFO - earnings date 2025-04-29 for DD is outside our date range
+2025-03-19 21:38:48,691 - earnings_alert - INFO - processing ticker: DHR
+2025-03-19 21:38:48,766 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/DHR?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=DHR&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:38:48,766 - earnings_alert - INFO - earnings date 2025-04-21 for DHR is outside our date range
+2025-03-19 21:38:48,766 - earnings_alert - INFO - processing ticker: DIS
+2025-03-19 21:38:48,844 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/DIS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=DIS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 390
+2025-03-19 21:38:48,844 - earnings_alert - INFO - earnings date 2025-05-05 for DIS is outside our date range
+2025-03-19 21:38:48,845 - earnings_alert - INFO - processing ticker: DOW
+2025-03-19 21:38:48,918 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/DOW?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=DOW&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:38:48,918 - earnings_alert - INFO - earnings date 2025-04-24 for DOW is outside our date range
+2025-03-19 21:38:48,919 - earnings_alert - INFO - processing ticker: DUK
+2025-03-19 21:38:48,962 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/DUK?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=DUK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 382
+2025-03-19 21:38:48,963 - earnings_alert - INFO - earnings date 2025-05-05 for DUK is outside our date range
+2025-03-19 21:38:48,963 - earnings_alert - INFO - processing ticker: EMR
+2025-03-19 21:38:49,008 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/EMR?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=EMR&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:38:49,008 - earnings_alert - INFO - earnings date 2025-05-06 for EMR is outside our date range
+2025-03-19 21:38:49,009 - earnings_alert - INFO - processing ticker: EXC
+2025-03-19 21:38:49,054 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/EXC?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=EXC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:38:49,054 - earnings_alert - INFO - earnings date 2025-04-30 for EXC is outside our date range
+2025-03-19 21:38:49,054 - earnings_alert - INFO - processing ticker: F
+2025-03-19 21:38:49,125 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/F?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=F&crumb=v1WWQHyu6p3 HTTP/1.1" 200 390
+2025-03-19 21:38:49,125 - earnings_alert - INFO - earnings date 2025-04-22 for F is outside our date range
+2025-03-19 21:38:49,125 - earnings_alert - INFO - processing ticker: FB
+2025-03-19 21:38:49,169 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/FB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=FB&crumb=v1WWQHyu6p3 HTTP/1.1" 404 115
+2025-03-19 21:38:49,169 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['csrf', 1, 0])
+2025-03-19 21:38:49,272 - urllib3.connectionpool - DEBUG - https://guce.yahoo.com:443 "GET /consent HTTP/1.1" 302 0
+2025-03-19 21:38:49,762 - urllib3.connectionpool - DEBUG - https://www.yahoo.com:443 "GET /?guccounter=1 HTTP/1.1" 200 None
+2025-03-19 21:38:49,878 - peewee - DEBUG - ('SELECT "t1"."strategy", "t1"."fetch_date", "t1"."cookie_bytes" FROM "_cookieschema" AS "t1" WHERE ("t1"."strategy" = ?) LIMIT ? OFFSET ?', ['basic', 1, 0])
+2025-03-19 21:38:50,000 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v1/test/getcrumb HTTP/1.1" 200 11
+2025-03-19 21:38:50,072 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/FB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=FB&crumb=v1WWQHyu6p3 HTTP/1.1" 404 108
+2025-03-19 21:38:50,072 - yfinance - ERROR - 404 Client Error: Not Found for url: https://query2.finance.yahoo.com/v10/finance/quoteSummary/FB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=FB&crumb=v1WWQHyu6p3
+2025-03-19 21:38:51,544 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1181
+2025-03-19 21:38:51,546 - yfinance - ERROR - FB: $FB: possibly delisted; no earnings dates found
+2025-03-19 21:38:51,638 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1181
+2025-03-19 21:38:51,639 - yfinance - ERROR - FB: $FB: possibly delisted; no earnings dates found
+2025-03-19 21:38:51,640 - earnings_alert - DEBUG - method 2 failed for FB: 'NoneType' object has no attribute 'empty'
+2025-03-19 21:38:51,707 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "POST /v1/finance/visualization?lang=en-US&region=US&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1181
+2025-03-19 21:38:51,709 - yfinance - ERROR - FB: $FB: possibly delisted; no earnings dates found
+2025-03-19 21:38:51,709 - earnings_alert - DEBUG - method 3 failed for FB: 'NoneType' object has no attribute 'empty'
+2025-03-19 21:38:51,709 - earnings_alert - INFO - couldn't find earnings date for FB using any method
+2025-03-19 21:38:51,709 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:38:53,710 - earnings_alert - INFO - processing batch 5/10 (10 tickers)
+2025-03-19 21:38:53,710 - earnings_alert - INFO - processing ticker: FDX
+2025-03-19 21:38:53,783 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/FDX?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=FDX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 378
+2025-03-19 21:38:53,865 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/FDX?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=FDX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2916
+2025-03-19 21:38:54,007 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=FDX&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1129
+2025-03-19 21:38:54,085 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/FDX?symbol=FDX&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:54,086 - earnings_alert - INFO - added earnings entry for FDX on 2025-03-20
+2025-03-19 21:38:54,086 - earnings_alert - INFO - processing ticker: GD
+2025-03-19 21:38:54,165 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GD?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GD&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:54,166 - earnings_alert - INFO - earnings date 2025-04-22 for GD is outside our date range
+2025-03-19 21:38:54,166 - earnings_alert - INFO - processing ticker: GE
+2025-03-19 21:38:54,240 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GE?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 374
+2025-03-19 21:38:54,241 - earnings_alert - INFO - earnings date 2025-04-22 for GE is outside our date range
+2025-03-19 21:38:54,241 - earnings_alert - INFO - processing ticker: GILD
+2025-03-19 21:38:54,312 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GILD?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GILD&crumb=v1WWQHyu6p3 HTTP/1.1" 200 374
+2025-03-19 21:38:54,313 - earnings_alert - INFO - earnings date 2025-04-24 for GILD is outside our date range
+2025-03-19 21:38:54,313 - earnings_alert - INFO - processing ticker: GM
+2025-03-19 21:38:54,374 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:38:54,374 - earnings_alert - INFO - earnings date 2025-04-29 for GM is outside our date range
+2025-03-19 21:38:54,374 - earnings_alert - INFO - processing ticker: GOOG
+2025-03-19 21:38:54,437 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GOOG?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GOOG&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:54,437 - earnings_alert - INFO - earnings date 2025-04-23 for GOOG is outside our date range
+2025-03-19 21:38:54,437 - earnings_alert - INFO - processing ticker: GOOGL
+2025-03-19 21:38:54,530 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GOOGL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GOOGL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:38:54,531 - earnings_alert - INFO - earnings date 2025-04-23 for GOOGL is outside our date range
+2025-03-19 21:38:54,531 - earnings_alert - INFO - processing ticker: GS
+2025-03-19 21:38:54,610 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=GS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 379
+2025-03-19 21:38:54,694 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/GS?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=GS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2933
+2025-03-19 21:38:54,758 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=GS&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1167
+2025-03-19 21:38:54,893 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/GS?symbol=GS&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 360
+2025-03-19 21:38:54,894 - earnings_alert - INFO - added earnings entry for GS on 2025-04-14
+2025-03-19 21:38:54,894 - earnings_alert - INFO - processing ticker: HD
+2025-03-19 21:38:54,956 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/HD?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=HD&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:38:54,957 - earnings_alert - INFO - earnings date 2025-05-20 for HD is outside our date range
+2025-03-19 21:38:54,957 - earnings_alert - INFO - processing ticker: HON
+2025-03-19 21:38:55,060 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/HON?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=HON&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:55,061 - earnings_alert - INFO - earnings date 2025-04-23 for HON is outside our date range
+2025-03-19 21:38:55,061 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:38:57,062 - earnings_alert - INFO - processing batch 6/10 (10 tickers)
+2025-03-19 21:38:57,062 - earnings_alert - INFO - processing ticker: IBM
+2025-03-19 21:38:57,134 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/IBM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=IBM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 21:38:57,135 - earnings_alert - INFO - earnings date 2025-04-23 for IBM is outside our date range
+2025-03-19 21:38:57,135 - earnings_alert - INFO - processing ticker: INTC
+2025-03-19 21:38:57,210 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/INTC?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=INTC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 388
+2025-03-19 21:38:57,211 - earnings_alert - INFO - earnings date 2025-04-23 for INTC is outside our date range
+2025-03-19 21:38:57,211 - earnings_alert - INFO - processing ticker: JNJ
+2025-03-19 21:38:57,288 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JNJ?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=JNJ&crumb=v1WWQHyu6p3 HTTP/1.1" 200 379
+2025-03-19 21:38:57,352 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JNJ?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=JNJ&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:57,438 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=JNJ&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1114
+2025-03-19 21:38:57,508 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/JNJ?symbol=JNJ&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:57,509 - earnings_alert - INFO - added earnings entry for JNJ on 2025-04-15
+2025-03-19 21:38:57,509 - earnings_alert - INFO - processing ticker: JPM
+2025-03-19 21:38:57,586 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JPM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=JPM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:38:57,663 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/JPM?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=JPM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:38:57,747 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=JPM&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1131
+2025-03-19 21:38:57,819 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/JPM?symbol=JPM&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:57,820 - earnings_alert - INFO - added earnings entry for JPM on 2025-04-11
+2025-03-19 21:38:57,820 - earnings_alert - INFO - processing ticker: KHC
+2025-03-19 21:38:57,923 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/KHC?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=KHC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:57,924 - earnings_alert - INFO - earnings date 2025-04-29 for KHC is outside our date range
+2025-03-19 21:38:57,924 - earnings_alert - INFO - processing ticker: KMI
+2025-03-19 21:38:58,012 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/KMI?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=KMI&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:58,118 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/KMI?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=KMI&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2953
+2025-03-19 21:38:58,203 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=KMI&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1135
+2025-03-19 21:38:58,273 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/KMI?symbol=KMI&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:38:58,274 - earnings_alert - INFO - added earnings entry for KMI on 2025-04-15
+2025-03-19 21:38:58,274 - earnings_alert - INFO - processing ticker: KO
+2025-03-19 21:38:58,348 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/KO?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=KO&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:58,349 - earnings_alert - INFO - earnings date 2025-04-28 for KO is outside our date range
+2025-03-19 21:38:58,349 - earnings_alert - INFO - processing ticker: LLY
+2025-03-19 21:38:58,421 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/LLY?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=LLY&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:38:58,422 - earnings_alert - INFO - earnings date 2025-05-01 for LLY is outside our date range
+2025-03-19 21:38:58,422 - earnings_alert - INFO - processing ticker: LMT
+2025-03-19 21:38:58,482 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/LMT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=LMT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:58,482 - earnings_alert - INFO - earnings date 2025-04-21 for LMT is outside our date range
+2025-03-19 21:38:58,482 - earnings_alert - INFO - processing ticker: LOW
+2025-03-19 21:38:58,548 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/LOW?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=LOW&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:38:58,549 - earnings_alert - INFO - earnings date 2025-05-21 for LOW is outside our date range
+2025-03-19 21:38:58,549 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:39:00,549 - earnings_alert - INFO - processing batch 7/10 (10 tickers)
+2025-03-19 21:39:00,549 - earnings_alert - INFO - processing ticker: MA
+2025-03-19 21:39:00,636 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:00,636 - earnings_alert - INFO - earnings date 2025-04-29 for MA is outside our date range
+2025-03-19 21:39:00,637 - earnings_alert - INFO - processing ticker: MCD
+2025-03-19 21:39:00,704 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MCD?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MCD&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:00,705 - earnings_alert - INFO - earnings date 2025-04-28 for MCD is outside our date range
+2025-03-19 21:39:00,705 - earnings_alert - INFO - processing ticker: MDLZ
+2025-03-19 21:39:00,771 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MDLZ?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MDLZ&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:00,772 - earnings_alert - INFO - earnings date 2025-04-28 for MDLZ is outside our date range
+2025-03-19 21:39:00,772 - earnings_alert - INFO - processing ticker: MDT
+2025-03-19 21:39:00,850 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MDT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MDT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 374
+2025-03-19 21:39:00,851 - earnings_alert - INFO - earnings date 2025-05-21 for MDT is outside our date range
+2025-03-19 21:39:00,851 - earnings_alert - INFO - processing ticker: MET
+2025-03-19 21:39:00,926 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MET?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MET&crumb=v1WWQHyu6p3 HTTP/1.1" 200 391
+2025-03-19 21:39:00,926 - earnings_alert - INFO - earnings date 2025-04-29 for MET is outside our date range
+2025-03-19 21:39:00,926 - earnings_alert - INFO - processing ticker: MMM
+2025-03-19 21:39:00,996 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MMM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MMM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:00,997 - earnings_alert - INFO - earnings date 2025-04-28 for MMM is outside our date range
+2025-03-19 21:39:00,997 - earnings_alert - INFO - processing ticker: MO
+2025-03-19 21:39:01,060 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MO?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MO&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:01,060 - earnings_alert - INFO - earnings date 2025-04-29 for MO is outside our date range
+2025-03-19 21:39:01,061 - earnings_alert - INFO - processing ticker: MRK
+2025-03-19 21:39:01,134 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MRK?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MRK&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:01,135 - earnings_alert - INFO - earnings date 2025-04-24 for MRK is outside our date range
+2025-03-19 21:39:01,135 - earnings_alert - INFO - processing ticker: MS
+2025-03-19 21:39:01,208 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:01,343 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MS?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=MS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 3050
+2025-03-19 21:39:01,425 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=MS&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1131
+2025-03-19 21:39:01,496 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/MS?symbol=MS&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 244
+2025-03-19 21:39:01,497 - earnings_alert - INFO - added earnings entry for MS on 2025-04-11
+2025-03-19 21:39:01,497 - earnings_alert - INFO - processing ticker: MSFT
+2025-03-19 21:39:01,609 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/MSFT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=MSFT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:01,609 - earnings_alert - INFO - earnings date 2025-04-23 for MSFT is outside our date range
+2025-03-19 21:39:01,609 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:39:03,610 - earnings_alert - INFO - processing batch 8/10 (10 tickers)
+2025-03-19 21:39:03,611 - earnings_alert - INFO - processing ticker: NEE
+2025-03-19 21:39:03,800 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NEE?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=NEE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:03,801 - earnings_alert - INFO - earnings date 2025-04-21 for NEE is outside our date range
+2025-03-19 21:39:03,801 - earnings_alert - INFO - processing ticker: NFLX
+2025-03-19 21:39:03,875 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NFLX?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=NFLX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 323
+2025-03-19 21:39:03,964 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NFLX?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=NFLX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2870
+2025-03-19 21:39:04,026 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=NFLX&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1150
+2025-03-19 21:39:04,072 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/NFLX?symbol=NFLX&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 362
+2025-03-19 21:39:04,073 - earnings_alert - INFO - added earnings entry for NFLX on 2025-04-17
+2025-03-19 21:39:04,073 - earnings_alert - INFO - processing ticker: NKE
+2025-03-19 21:39:04,151 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NKE?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=NKE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:39:04,249 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NKE?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=NKE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 3244
+2025-03-19 21:39:04,310 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=NKE&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1107
+2025-03-19 21:39:04,384 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/NKE?symbol=NKE&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 360
+2025-03-19 21:39:04,386 - earnings_alert - INFO - added earnings entry for NKE on 2025-03-20
+2025-03-19 21:39:04,386 - earnings_alert - INFO - processing ticker: NVDA
+2025-03-19 21:39:04,490 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/NVDA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=NVDA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:39:04,491 - earnings_alert - INFO - earnings date 2025-05-28 for NVDA is outside our date range
+2025-03-19 21:39:04,491 - earnings_alert - INFO - processing ticker: ORCL
+2025-03-19 21:39:04,650 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/ORCL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=ORCL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:04,651 - earnings_alert - INFO - earnings date 2025-06-09 for ORCL is outside our date range
+2025-03-19 21:39:04,651 - earnings_alert - INFO - processing ticker: OXY
+2025-03-19 21:39:04,792 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/OXY?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=OXY&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:04,793 - earnings_alert - INFO - earnings date 2025-05-05 for OXY is outside our date range
+2025-03-19 21:39:04,793 - earnings_alert - INFO - processing ticker: PEP
+2025-03-19 21:39:04,868 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PEP?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PEP&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:04,869 - earnings_alert - INFO - earnings date 2025-04-24 for PEP is outside our date range
+2025-03-19 21:39:04,869 - earnings_alert - INFO - processing ticker: PFE
+2025-03-19 21:39:04,937 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PFE?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PFE&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:04,937 - earnings_alert - INFO - earnings date 2025-04-29 for PFE is outside our date range
+2025-03-19 21:39:04,937 - earnings_alert - INFO - processing ticker: PG
+2025-03-19 21:39:04,998 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PG?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PG&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:39:04,998 - earnings_alert - INFO - earnings date 2025-04-24 for PG is outside our date range
+2025-03-19 21:39:04,999 - earnings_alert - INFO - processing ticker: PM
+2025-03-19 21:39:05,071 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 375
+2025-03-19 21:39:05,072 - earnings_alert - INFO - earnings date 2025-04-23 for PM is outside our date range
+2025-03-19 21:39:05,072 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:39:07,073 - earnings_alert - INFO - processing batch 9/10 (10 tickers)
+2025-03-19 21:39:07,073 - earnings_alert - INFO - processing ticker: PYPL
+2025-03-19 21:39:07,154 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/PYPL?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=PYPL&crumb=v1WWQHyu6p3 HTTP/1.1" 200 330
+2025-03-19 21:39:07,154 - earnings_alert - INFO - earnings date 2025-04-28 for PYPL is outside our date range
+2025-03-19 21:39:07,155 - earnings_alert - INFO - processing ticker: QCOM
+2025-03-19 21:39:07,231 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/QCOM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=QCOM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 390
+2025-03-19 21:39:07,232 - earnings_alert - INFO - earnings date 2025-04-29 for QCOM is outside our date range
+2025-03-19 21:39:07,233 - earnings_alert - INFO - processing ticker: RTX
+2025-03-19 21:39:07,388 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/RTX?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=RTX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:07,389 - earnings_alert - INFO - earnings date 2025-04-21 for RTX is outside our date range
+2025-03-19 21:39:07,389 - earnings_alert - INFO - processing ticker: SBUX
+2025-03-19 21:39:07,491 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/SBUX?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=SBUX&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:07,492 - earnings_alert - INFO - earnings date 2025-04-28 for SBUX is outside our date range
+2025-03-19 21:39:07,492 - earnings_alert - INFO - processing ticker: SO
+2025-03-19 21:39:07,566 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/SO?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=SO&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:07,567 - earnings_alert - INFO - earnings date 2025-04-30 for SO is outside our date range
+2025-03-19 21:39:07,567 - earnings_alert - INFO - processing ticker: SPG
+2025-03-19 21:39:07,642 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/SPG?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=SPG&crumb=v1WWQHyu6p3 HTTP/1.1" 200 386
+2025-03-19 21:39:07,642 - earnings_alert - INFO - earnings date 2025-05-05 for SPG is outside our date range
+2025-03-19 21:39:07,643 - earnings_alert - INFO - processing ticker: T
+2025-03-19 21:39:07,724 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/T?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=T&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:07,724 - earnings_alert - INFO - earnings date 2025-04-23 for T is outside our date range
+2025-03-19 21:39:07,726 - earnings_alert - INFO - processing ticker: TGT
+2025-03-19 21:39:07,796 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/TGT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=TGT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:07,797 - earnings_alert - INFO - earnings date 2025-05-20 for TGT is outside our date range
+2025-03-19 21:39:07,797 - earnings_alert - INFO - processing ticker: TMO
+2025-03-19 21:39:07,868 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/TMO?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=TMO&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:07,869 - earnings_alert - INFO - earnings date 2025-04-22 for TMO is outside our date range
+2025-03-19 21:39:07,869 - earnings_alert - INFO - processing ticker: TXN
+2025-03-19 21:39:07,926 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/TXN?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=TXN&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:07,926 - earnings_alert - INFO - earnings date 2025-04-21 for TXN is outside our date range
+2025-03-19 21:39:07,926 - earnings_alert - INFO - taking a short break between batches...
+2025-03-19 21:39:09,927 - earnings_alert - INFO - processing batch 10/10 (10 tickers)
+2025-03-19 21:39:09,927 - earnings_alert - INFO - processing ticker: UNH
+2025-03-19 21:39:09,974 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/UNH?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=UNH&crumb=v1WWQHyu6p3 HTTP/1.1" 200 393
+2025-03-19 21:39:10,027 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/UNH?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=UNH&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:39:10,121 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=UNH&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1160
+2025-03-19 21:39:10,199 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/UNH?symbol=UNH&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:39:10,199 - earnings_alert - INFO - added earnings entry for UNH on 2025-04-14
+2025-03-19 21:39:10,199 - earnings_alert - INFO - processing ticker: UNP
+2025-03-19 21:39:10,262 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/UNP?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=UNP&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:10,263 - earnings_alert - INFO - earnings date 2025-04-23 for UNP is outside our date range
+2025-03-19 21:39:10,263 - earnings_alert - INFO - processing ticker: UPS
+2025-03-19 21:39:10,322 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/UPS?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=UPS&crumb=v1WWQHyu6p3 HTTP/1.1" 200 387
+2025-03-19 21:39:10,323 - earnings_alert - INFO - earnings date 2025-04-21 for UPS is outside our date range
+2025-03-19 21:39:10,323 - earnings_alert - INFO - processing ticker: USB
+2025-03-19 21:39:10,383 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/USB?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=USB&crumb=v1WWQHyu6p3 HTTP/1.1" 200 375
+2025-03-19 21:39:10,462 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/USB?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=USB&crumb=v1WWQHyu6p3 HTTP/1.1" 200 3204
+2025-03-19 21:39:10,542 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=USB&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1210
+2025-03-19 21:39:10,620 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/USB?symbol=USB&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:39:10,621 - earnings_alert - INFO - added earnings entry for USB on 2025-04-16
+2025-03-19 21:39:10,621 - earnings_alert - INFO - processing ticker: V
+2025-03-19 21:39:10,732 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/V?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=V&crumb=v1WWQHyu6p3 HTTP/1.1" 200 384
+2025-03-19 21:39:10,733 - earnings_alert - INFO - earnings date 2025-04-21 for V is outside our date range
+2025-03-19 21:39:10,733 - earnings_alert - INFO - processing ticker: VZ
+2025-03-19 21:39:10,808 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/VZ?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=VZ&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:10,809 - earnings_alert - INFO - earnings date 2025-04-22 for VZ is outside our date range
+2025-03-19 21:39:10,809 - earnings_alert - INFO - processing ticker: WBA
+2025-03-19 21:39:10,874 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/WBA?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=WBA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 377
+2025-03-19 21:39:10,932 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/WBA?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=WBA&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2989
+2025-03-19 21:39:11,007 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=WBA&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1119
+2025-03-19 21:39:11,080 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/WBA?symbol=WBA&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 96
+2025-03-19 21:39:11,080 - earnings_alert - INFO - added earnings entry for WBA on 2025-04-08
+2025-03-19 21:39:11,081 - earnings_alert - INFO - processing ticker: WFC
+2025-03-19 21:39:11,138 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/WFC?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=WFC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 376
+2025-03-19 21:39:11,189 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/WFC?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=WFC&crumb=v1WWQHyu6p3 HTTP/1.1" 200 None
+2025-03-19 21:39:11,290 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=WFC&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1117
+2025-03-19 21:39:11,364 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/WFC?symbol=WFC&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:39:11,365 - earnings_alert - INFO - added earnings entry for WFC on 2025-04-11
+2025-03-19 21:39:11,365 - earnings_alert - INFO - processing ticker: WMT
+2025-03-19 21:39:11,421 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/WMT?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=WMT&crumb=v1WWQHyu6p3 HTTP/1.1" 200 380
+2025-03-19 21:39:11,421 - earnings_alert - INFO - earnings date 2025-05-15 for WMT is outside our date range
+2025-03-19 21:39:11,422 - earnings_alert - INFO - processing ticker: XOM
+2025-03-19 21:39:11,473 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/XOM?modules=calendarEvents&corsDomain=finance.yahoo.com&formatted=false&symbol=XOM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 379
+2025-03-19 21:39:11,528 - urllib3.connectionpool - DEBUG - https://query2.finance.yahoo.com:443 "GET /v10/finance/quoteSummary/XOM?modules=financialData%2CquoteType%2CdefaultKeyStatistics%2CassetProfile%2CsummaryDetail&corsDomain=finance.yahoo.com&formatted=false&symbol=XOM&crumb=v1WWQHyu6p3 HTTP/1.1" 200 2993
+2025-03-19 21:39:11,592 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /v7/finance/quote?symbols=XOM&formatted=false&crumb=v1WWQHyu6p3 HTTP/1.1" 200 1131
+2025-03-19 21:39:11,665 - urllib3.connectionpool - DEBUG - https://query1.finance.yahoo.com:443 "GET /ws/fundamentals-timeseries/v1/finance/timeseries/XOM?symbol=XOM&type=trailingPegRatio&period1=1726704000&period2=1742515200&crumb=v1WWQHyu6p3 HTTP/1.1" 200 361
+2025-03-19 21:39:11,666 - earnings_alert - INFO - added earnings entry for XOM on 2025-04-03
+2025-03-19 21:39:11,680 - earnings_alert - INFO - updated earnings history with 20 new entries
+2025-03-19 21:39:11,681 - earnings_alert - INFO - updated alerts.md with new earnings data
+2025-03-19 21:39:11,687 - earnings_alert - INFO - logged update at 2025-03-19 21:39:11
+2025-03-19 21:39:11,687 - earnings_alert - INFO - completed earnings alert update. found 20 upcoming earnings calls.
