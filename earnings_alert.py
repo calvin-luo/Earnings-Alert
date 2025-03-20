@@ -260,29 +260,44 @@ def generate_markdown_table(earnings_data, rules):
     # Sort by earnings date first
     sorted_data = sorted(earnings_data, key=lambda x: x['earnings_date'])
     
-    # Generate the header of the current month and next month
-    current_month = datetime.now().strftime("%B %Y")
-    next_month = (datetime.now() + timedelta(days=32)).strftime("%B %Y")
+    # Get current date info
+    today = datetime.now()
+    current_month_name = today.strftime("%B")
+    current_year = today.strftime("%Y")
     
-    markdown = f"# Financial Services Earnings Calendar: {current_month} - {next_month}\n\n"
-    markdown += f"*Last updated: {datetime.now().strftime('%Y-%m-%d')}*\n\n"
-    markdown += f"This calendar shows upcoming earnings calls for {len(earnings_data)} financial services companies.\n\n"
+    markdown = f"# Financial Services Earnings Calendar: {current_month_name} {current_year}\n\n"
+    markdown += f"*Last updated: {today.strftime('%Y-%m-%d')}*\n\n"
+    markdown += f"This calendar shows earnings calls for {len(earnings_data)} financial services companies.\n\n"
     
-    # Generate calendar view
+    # Generate calendar view (shows ALL earnings calls for the entire month)
     markdown += generate_calendar_view(sorted_data)
     
-    # Generate consolidated table view
-    markdown += "\n## Earnings Calls Details\n\n"
-    markdown += generate_consolidated_table(sorted_data, display_options)
+    # Filter for only upcoming earnings calls (today and future)
+    today_date = today.date()
+    upcoming_earnings = [
+        entry for entry in sorted_data 
+        if (hasattr(entry['earnings_date'], 'date') and entry['earnings_date'] >= today_date) or
+           (isinstance(entry['earnings_date'], str) and 
+            datetime.strptime(entry['earnings_date'], "%Y-%m-%d").date() >= today_date)
+    ]
+    
+    # Generate consolidated table view (only upcoming earnings)
+    if upcoming_earnings:
+        markdown += f"\n## Upcoming Earnings Calls - {current_month_name}\n\n"
+        markdown += generate_consolidated_table(upcoming_earnings, display_options)
+    else:
+        markdown += "\n## Upcoming Earnings Calls\n\n"
+        markdown += "No more earnings calls scheduled for this month.\n\n"
     
     return markdown
 
 def generate_calendar_view(earnings_data):
-    """Generate a calendar view for the earnings calls"""
+    """Generate a calendar view for the earnings calls for the entire month"""
     # Get current month and year
     today = datetime.now()
     month = today.month
     year = today.year
+    month_name = today.strftime("%B")
     
     # Get the first day of current month and number of days in month
     first_day = datetime(year, month, 1)
@@ -295,25 +310,26 @@ def generate_calendar_view(earnings_data):
     first_weekday = first_day.weekday()
     
     # Create calendar header
-    calendar_md = "## Monthly Calendar\n\n"
+    calendar_md = f"## {month_name} {year} Calendar\n\n"
     calendar_md += "| Mon | Tue | Wed | Thu | Fri | Sat | Sun |\n"
     calendar_md += "|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n"
     
-    # Group earnings by date
+    # Group earnings by date (for the entire month)
     earnings_by_date = {}
     for entry in earnings_data:
-        date = entry['earnings_date']
-        if hasattr(date, 'day'):
+        # Extract the date information
+        if hasattr(entry['earnings_date'], 'day'):
+            date = entry['earnings_date']
             day = date.day
             entry_month = date.month
             entry_year = date.year
         else:
             # If it's a string, parse it
             try:
-                parsed_date = datetime.strptime(str(date), "%Y-%m-%d")
-                day = parsed_date.day
-                entry_month = parsed_date.month
-                entry_year = parsed_date.year
+                date = datetime.strptime(str(entry['earnings_date']), "%Y-%m-%d").date()
+                day = date.day
+                entry_month = date.month
+                entry_year = date.year
             except:
                 continue
                 
@@ -340,10 +356,22 @@ def generate_calendar_view(earnings_data):
             # Add "..." if there are more than 5 tickers
             if len(earnings_by_date[day_in_month]) > 5:
                 ticker_str += ", ..."
-                
-            # Bold the date if it has earnings
-            cell_content = f"**{day_in_month}**<br>{ticker_str}"
+            
+            # Highlight current date and past dates differently
+            current_date = datetime(year, month, day_in_month).date()
+            today_date = datetime.now().date()
+            
+            if current_date == today_date:
+                # Bold and mark today's date with asterisks
+                cell_content = f"**{day_in_month}**<br>TODAY<br>{ticker_str}"
+            elif current_date < today_date:
+                # Past dates with earnings - show in lighter style 
+                cell_content = f"{day_in_month}<br><i>{ticker_str}</i>"
+            else:
+                # Future dates with earnings - bold
+                cell_content = f"**{day_in_month}**<br>{ticker_str}"
         else:
+            # Regular day without earnings
             cell_content = str(day_in_month)
             
         current_row.append(cell_content)
