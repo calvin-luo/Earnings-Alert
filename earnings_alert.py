@@ -119,14 +119,20 @@ def get_earnings_date_for_ticker(ticker):
         return None
 
 def fetch_company_info(ticker):
-    """Fetch company information for a ticker"""
+    """Fetch company information for a ticker and format company names"""
     try:
         stock = yf.Ticker(ticker)
         info = stock.info
         
+        # Get original name
+        original_name = info.get('shortName', ticker)
+        
+        # Format company name to be more colloquial
+        company_name = format_company_name(original_name, ticker)
+        
         # Get basic info
         company_info = {
-            'name': info.get('shortName', ticker),
+            'name': company_name,
             'market_cap': info.get('marketCap', 'N/A'),
             'pe_ratio': info.get('trailingPE', 'N/A'),
             'sector': info.get('sector', 'N/A'),
@@ -137,12 +143,139 @@ def fetch_company_info(ticker):
     except Exception as e:
         logger.error(f"Error fetching info for {ticker}: {str(e)}")
         return {
-            'name': ticker,
+            'name': format_company_name(ticker, ticker),
             'market_cap': 'N/A',
             'pe_ratio': 'N/A',
             'sector': 'N/A',
             'industry': 'N/A'
         }
+
+def format_company_name(name, ticker):
+    """Format company name to be more colloquial"""
+    # Dictionary of ticker to preferred name mappings
+    name_mappings = {
+        "GS": "Goldman Sachs",
+        "BK": "BNY Mellon",
+        "JPM": "JPMorgan Chase",
+        "BAC": "Bank of America",
+        "MS": "Morgan Stanley",
+        "WFC": "Wells Fargo",
+        "AMGN": "Amgen",
+        "AAPL": "Apple",
+        "MSFT": "Microsoft",
+        "GOOGL": "Google",
+        "GOOG": "Google",
+        "AMZN": "Amazon",
+        "META": "Meta",
+        "FB": "Meta",
+        "JNJ": "Johnson & Johnson",
+        "PG": "Procter & Gamble",
+        "V": "Visa",
+        "MA": "Mastercard",
+        "WMT": "Walmart",
+        "INTC": "Intel",
+        "CSCO": "Cisco",
+        "VZ": "Verizon",
+        "T": "AT&T",
+        "PFE": "Pfizer",
+        "MRK": "Merck",
+        "ABBV": "AbbVie",
+        "KO": "Coca-Cola",
+        "PEP": "PepsiCo",
+        "CVX": "Chevron",
+        "XOM": "Exxon Mobil",
+        "HD": "Home Depot",
+        "NFLX": "Netflix",
+        "NVDA": "NVIDIA",
+        "ADBE": "Adobe",
+        "COST": "Costco",
+        "DIS": "Disney",
+        "CRM": "Salesforce",
+        "ABT": "Abbott",
+        "TMO": "Thermo Fisher",
+        "DHR": "Danaher",
+        "AVGO": "Broadcom",
+        "PYPL": "PayPal",
+        "ACN": "Accenture",
+        "BMY": "Bristol Myers Squibb",
+        "LLY": "Eli Lilly",
+        "UNH": "UnitedHealth",
+        "MDT": "Medtronic",
+        "TXN": "Texas Instruments",
+        "QCOM": "Qualcomm",
+        "NEE": "NextEra Energy",
+        "RTX": "Raytheon",
+        "HON": "Honeywell",
+        "UNP": "Union Pacific",
+        "LMT": "Lockheed Martin",
+        "AMT": "American Tower",
+        "IBM": "IBM",
+        "CAT": "Caterpillar",
+        "GE": "General Electric",
+        "MMM": "3M",
+        "AXP": "American Express",
+        "BA": "Boeing",
+        "LOW": "Lowe's",
+        "SBUX": "Starbucks",
+        "GILD": "Gilead Sciences",
+        "MCD": "McDonald's",
+        "SPG": "Simon Property Group",
+        "CVS": "CVS Health",
+        "COF": "Capital One",
+        "C": "Citigroup",
+        "USB": "US Bancorp",
+        "TGT": "Target",
+        "MO": "Altria",
+        "PM": "Philip Morris",
+        "BLK": "BlackRock",
+        "F": "Ford",
+        "GM": "General Motors",
+        "MDLZ": "Mondelez",
+        "BKNG": "Booking Holdings",
+        "FDX": "FedEx",
+        "UPS": "UPS",
+        "SO": "Southern Company",
+        "DUK": "Duke Energy",
+        "AIG": "AIG",
+        "ALL": "Allstate",
+        "MET": "MetLife"
+    }
+    
+    # If we have a preferred name for this ticker, use it
+    if ticker in name_mappings:
+        return name_mappings[ticker]
+    
+    # Otherwise try to clean up the name
+    
+    # Remove common suffixes
+    for suffix in [", Inc.", " Inc.", ", Corporation", " Corporation", 
+                  " Corp.", ", Corp.", " Co.", ", Co.",
+                  " Group, Inc. (The)", " Group", 
+                  " Incorporated", ", Ltd.", " Ltd.",
+                  " PLC", " Limited", " Holding", "Holdings", 
+                  " International", " Intl", " Enterprises",
+                  ", LLC", " LLC"]:
+        if name.endswith(suffix):
+            name = name[:-len(suffix)]
+    
+    # Remove "(The)" at the beginning or end
+    name = name.replace("(The) ", "").replace(" (The)", "")
+    
+    # Remove leading "The "
+    if name.startswith("The "):
+        name = name[4:]
+    
+    # Special case for banks, make it shorter
+    if "Bank of" in name and "America" not in name:
+        parts = name.split()
+        bank_index = parts.index("Bank")
+        if bank_index < len(parts) - 2:
+            # Keep it shorter for regional banks
+            if len(parts) > 5:
+                # Get the distinctive part of the name
+                name = " ".join(parts[:bank_index])
+            
+    return name.strip()
 
 def fetch_earnings_data(tickers, rules):
     """Fetch earnings data for the list of tickers using rules from config"""
