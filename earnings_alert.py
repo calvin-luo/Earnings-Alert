@@ -391,12 +391,10 @@ def generate_markdown_table(earnings_data, rules):
 
 def generate_consolidated_table(earnings_data, display_options):
     """Generate a consolidated table of all earnings calls"""
-    # Standard table headers
-    headers = ["Date", "Ticker", "Company", "Sector", "Industry"]
+    # Standard table headers - removed Industry and P/E Ratio, renamed Sector to Industry
+    headers = ["Date", "Ticker", "Company", "Industry"]
     if display_options.get('show_market_cap', True):
         headers.append("Market Cap")
-    if display_options.get('show_pe_ratio', True):
-        headers.append("P/E Ratio")
     
     result = ""
     
@@ -413,20 +411,16 @@ def generate_consolidated_table(earnings_data, display_options):
     for entry in earnings_data:
         date_str = entry['earnings_date'].strftime("%Y-%m-%d") if hasattr(entry['earnings_date'], 'strftime') else str(entry['earnings_date'])
         market_cap_str = f"${entry['market_cap'] / 1e9:.2f}B" if isinstance(entry['market_cap'], (int, float)) else entry['market_cap']
-        pe_str = f"{entry['pe_ratio']:.2f}" if isinstance(entry['pe_ratio'], (int, float)) else entry['pe_ratio']
         
         row = [
             date_str,
             entry['ticker'],
             entry['name'],
-            entry['sector'],
-            entry['industry']
+            entry['sector']  # Use sector data but display it as "Industry"
         ]
         
         if display_options.get('show_market_cap', True):
             row.append(market_cap_str)
-        if display_options.get('show_pe_ratio', True):
-            row.append(pe_str)
         
         result += "| " + " | ".join(row) + " |\n"
     

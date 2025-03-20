@@ -4,9 +4,7 @@
     "batch_size": 10,
     "min_market_cap": 1000000000,
     "display_options": {
-        "show_pe_ratio": true,
         "show_market_cap": true,
-        "show_sector": true,
         "show_industry": true
     }
 }
